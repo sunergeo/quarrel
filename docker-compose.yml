@@ -1,0 +1,32 @@
+# Argus, local dev.
+#
+#   docker compose up --build      # build the image (tests run inside) and run it
+#   docker compose run --rm argus --version
+#
+# Builds the same image staging and prod will run; only the environment
+# differs. Deployment wiring arrives at roadmap M8.
+#
+# Locked down the way production will be, so dev can't hide a permission
+# assumption: read-only filesystem, no Linux capabilities, no network yet
+# (nothing to talk to until M5 ships to a destination). Read-only log mounts
+# arrive in M1, with the first files to tail.
+
+services:
+  argus:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: argus:dev
+    container_name: argus
+    environment:
+      ARGUS_ENV: dev
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    network_mode: none
+    restart: "no"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"

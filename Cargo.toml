@@ -1,0 +1,27 @@
+[package]
+name = "argus"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Per-host log shipper: tails log files and ships them to an ingest endpoint"
+publish = false
+
+# Layout (the Cargo conventions, nothing custom):
+#   src/lib.rs      the library: all real logic lives here, so tests can reach it
+#   src/main.rs     the binary: a thin shell that calls into the library
+#   src/lessons.rs  warm-up exercises kept as real, tested code
+#   tests/*.rs      integration tests (each file is its own test crate)
+#   examples/*.rs   runnable examples: `cargo run --example factorial`
+
+[dependencies]
+# Empty on purpose. Each roadmap stop adds the crates it needs, when it needs them.
+
+[profile.release]
+# The day-2 lesson: release builds wrap integer overflow silently by default.
+# Argus does arithmetic on byte offsets; a silent wrap there is silent data loss.
+overflow-checks = true
+# Drop debug symbols from the shipped binary (smaller image).
+strip = true
+
+[dev-dependencies]
+tempfile = "3.27.0"

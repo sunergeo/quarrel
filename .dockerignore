@@ -1,0 +1,3 @@
+# Keep local build output and git metadata out of the Docker build context.
+target
+.git
