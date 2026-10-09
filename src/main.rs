@@ -18,7 +18,14 @@ fn main() -> Result<(), Box<dyn Error>> {
         [cmd, path] if cmd == "scan" => {
             let path = Path::new(path);
             let counts = complete_lines(path)?;
-            println!("{} {} {}", counts.lines, counts.end_offset, path.display());
+            for line in &counts.lines {
+                println!("{}: {}", line.offset, String::from_utf8_lossy(&line.bytes));
+            }
+            println!(
+                "{} lines, end_offset {}",
+                counts.lines.len(),
+                counts.end_offset
+            );
             return Ok(());
         }
         _ => {

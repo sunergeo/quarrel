@@ -3,9 +3,18 @@ use std::io::{self, BufRead, BufReader};
 use std::path::Path;
 
 #[derive(Default)]
+pub struct Line {
+    /// Where the line starts in the file
+    pub offset: u64,
+
+    /// The line's raw bytes, minus the trailing \n
+    pub bytes: Vec<u8>,
+}
+
+#[derive(Default)]
 pub struct CompleteLines {
-    /// Number of complete lines read (does not count partially complete lines)
-    pub lines: u64,
+    /// Collection of complete lines read (does not count partially complete lines)
+    pub lines: Vec<Line>,
 
     /// Offset by the number of bytes in the complete lines read ... essentially
     /// a pointer to the starting point for the next read cycle.
@@ -30,11 +39,15 @@ pub fn complete_lines(path: &Path) -> io::Result<CompleteLines> {
         }
 
         if buf.ends_with(b"\n") {
-            complete_lines.lines += 1;
+            // Remove the trailing \n
+            buf.pop();
+
+            complete_lines.lines.push(Line {
+                bytes: std::mem::take(&mut buf),
+                offset: complete_lines.end_offset,
+            });
             complete_lines.end_offset += n as u64;
         }
-
-        buf.clear();
     }
 
     Ok(complete_lines)

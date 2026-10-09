@@ -7,7 +7,7 @@ use argus::lessons::{factorial, product};
 
 fn main() {
     let x: [f64; 0] = [];
-    println!("Product: {:?}: {}", &x, product(&x));
+    println!("Product: {:?}: {}", x, product(&x));
 
     let r = [1.0, 2.24, 5.1, 12.1];
     let p = product(&r);
