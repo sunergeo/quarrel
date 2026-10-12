@@ -1,10 +1,10 @@
 use std::fs::File;
-use std::io::{self, BufRead, BufReader};
+use std::io::{self, BufRead, BufReader, Seek, SeekFrom};
 use std::path::Path;
 
 #[derive(Default)]
 pub struct Line {
-    /// Where the line starts in the file
+    /// Byte position where the line starts in the file (never a line count)
     pub offset: u64,
 
     /// The line's raw bytes, minus the trailing \n
@@ -22,15 +22,21 @@ pub struct CompleteLines {
 }
 
 pub fn complete_lines(path: &Path) -> io::Result<CompleteLines> {
+    complete_lines_from(path, 0)
+}
+
+pub fn complete_lines_from(path: &Path, start: u64) -> io::Result<CompleteLines> {
     // Open the file
     let file = File::open(path)?;
 
     // Wrap it in a BufReader
     let mut reader = BufReader::new(file);
 
-    // Read line by line
     let mut complete_lines = CompleteLines::default();
     let mut buf: Vec<u8> = Vec::new();
+
+    reader.seek(SeekFrom::Start(start))?;
+    complete_lines.end_offset = start;
 
     loop {
         let n = reader.read_until(b'\n', &mut buf)?;
