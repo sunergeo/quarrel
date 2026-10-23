@@ -5,6 +5,8 @@
 //! be tested directly; code in here can only be tested by running the binary.
 
 use argus::scan::{complete_lines, complete_lines_from};
+use argus::state::State;
+
 use std::env;
 use std::error::Error;
 use std::path::Path;
@@ -17,6 +19,36 @@ fn main() -> Result<(), Box<dyn Error>> {
     let args: Vec<String> = env::args().skip(1).collect();
 
     match args.as_slice() {
+        [cmd, file, state_file] if cmd == "tail" => {
+            let state_path = Path::new(state_file);
+            let path = Path::new(file);
+            let mut state = State::load(state_path)?;
+            let key = file.to_string();
+            let mut offset = state.offsets.get(&key).copied().unwrap_or(0);
+
+            loop {
+                let counts = complete_lines_from(path, offset)?;
+
+                if !counts.lines.is_empty() {
+                    for line in &counts.lines {
+                        println!("{}: {}", line.offset, String::from_utf8_lossy(&line.bytes));
+                    }
+
+                    offset = counts.end_offset;
+                    state.offsets.insert(key.clone(), offset);
+                    state.save(state_path)?;
+
+                    println!(
+                        "{} lines, end_offset {}",
+                        counts.lines.len(),
+                        counts.end_offset
+                    );
+                }
+
+                let dur = Duration::from_secs(1);
+                thread::sleep(dur);
+            }
+        }
         [cmd, path] if cmd == "tail" => {
             let path = Path::new(path);
             let mut offset: u64 = 0;

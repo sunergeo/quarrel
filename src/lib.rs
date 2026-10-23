@@ -12,6 +12,7 @@
 
 pub mod lessons;
 pub mod scan;
+pub mod state;
 
 /// The crate name, read from `Cargo.toml` at compile time.
 pub const NAME: &str = env!("CARGO_PKG_NAME");
