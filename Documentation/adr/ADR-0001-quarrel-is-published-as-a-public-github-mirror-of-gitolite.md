@@ -33,8 +33,9 @@ reserved.
    stay local.
 4. **No work lands on GitHub.** No web-UI commits, no merged pull requests. An outside contribution
    is applied locally on a working branch and promoted through gitolite like any other change.
-5. **GitHub protection (manual, recommended):** a ruleset on `master` that blocks force-push and
-   deletion. It is a seatbelt only; GitHub is not reported as gated (host-contract §5.2).
+5. **GitHub protection:** ruleset `protect master` (id `27128008`, created 2026-11-12, active) on the
+   default branch: `deletion` + `non_fast_forward`, empty bypass list. It is a seatbelt only;
+   GitHub is not reported as gated (host-contract §5.2).
 6. **License:** `MIT OR Apache-2.0` (the Rust ecosystem convention), `LICENSE-MIT` +
    `LICENSE-APACHE` + `Cargo.toml` `license`, copyright Sunergeo Systems.
 
