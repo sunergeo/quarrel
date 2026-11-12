@@ -1,10 +1,13 @@
-# quarrel
+<h1 align="center">
+  <img src="Documentation/Brand/quarrel-wordmark-tagline.png" alt="Quarrel: Read the host. Measure the path." width="426">
+</h1>
 
-A small toolkit of host-side tools in Rust, one Cargo workspace (ADR-0002):
+Quarrel is an open-source Rust toolkit for host-side observability: one Cargo workspace
+(ADR-0002) that reads what the host's software reports, and will measure what the network did.
 
 | Crate | What |
 |---|---|
-| `crates/quarrel-shipper` | The per-host log shipper: tails log files and ships the raw lines to an ingest endpoint. A static binary in a `scratch` image. (Formerly `argus`.) |
+| `crates/quarrel-shipper` | In development. The per-host log shipper: tails log files and ships the raw lines to an ingest endpoint. A static binary in a `scratch` image. |
 | `quarrel-core` | Planned: the shared event model, buffer, outputs and state. |
 | `quarrel-probe` | Planned: an active network probe (latency, loss, MTR-style paths). |
 
@@ -58,6 +61,7 @@ docker build -t quarrel-shipper:dev .
 | `Dockerfile` | Static musl build → `scratch`. Tests run inside the build. |
 | `docker-compose.yml` | Local dev only. |
 | `Documentation/` | The governed funnel: `STATUS.md`, `ROADMAP.md`, `BACKLOG.md`, `adr/`. |
+| `Documentation/Brand/` | The brand: [spec](Documentation/Brand/quarrel-brand-spec.md) (logo, colors, type, voice) and the approved board. |
 
 ## Not wired yet (roadmap M8)
 
