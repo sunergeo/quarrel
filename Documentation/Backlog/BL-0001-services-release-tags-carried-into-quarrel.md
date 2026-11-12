@@ -2,14 +2,14 @@
 id: BL-0001
 title: The extraction from services carried 87 services-release tags into quarrel
 type: Process-idea
-status: New
+status: Closed
 horizon: now
 big_idea: null
 reporter: SB (via Cowork agent)
 opened: 2026-11-12
 updated: 2026-11-12
 affected: refs/tags/*
-disposition: null
+disposition: "Option 1 — deleted locally before the first push (SB, 2026-11-12)"
 ---
 
 # BL-0001 — Services-release tags carried into quarrel
@@ -35,3 +35,4 @@ the server, so they could not be cleanly removed later. Until decided, push `mas
 ## Log
 
 - 2026-11-12 — Found during onboarding (GOV-CR-0024).
+- 2026-11-12 — SB chose option 1: all 87 tags deleted locally before the first push.

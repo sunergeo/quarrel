@@ -56,7 +56,7 @@ deployed yet; packaging and CI are M8). If a request appears to conflict with th
     `master`; never `--no-ff`; never force-push a protected ref.
 14. **Release model is `trunk-only`.** There are no release refs yet. Moving to `rolling-pair` when
     argus is first deployed is a §11 governed operation (ADR + refs + roster in one effort).
-    **Do not push `--tags`**: the repo carries services-release tags from the extraction (BL-0001).
+    The services-release tags the extraction carried were deleted before the first push (BL-0001).
 15. **Deletion is always confirmed; never route around a block.** In Cowork, `Operation not
     permitted`/EPERM on a delete (or a git step that must unlink) means call
     `allow_cowork_file_delete`, then proceed. Deleting history/outcomes is forbidden — archive instead.
