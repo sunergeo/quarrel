@@ -18,7 +18,8 @@ tails log files and ships the raw lines to an ingest endpoint, built as a static
 `scratch` image. It is built step by step along a milestone roadmap (M0–M2 shipped, M3 discovery in
 progress; see `ROADMAP.md`). Its one invariant: **never save a file offset past what the destination
 has acknowledged** — a duplicate is harmless, a skipped line is the only real failure. Server-side
-repo name: `git:quarrel`. Governed at **`scope: roster`**, release model **`trunk-only`** (not
+repo name: `git:quarrel` (the system of record); public mirror
+`github` = `github.com/sunergeo/quarrel`, pushed **after** `origin` accepts (ADR-0001). Governed at **`scope: roster`**, release model **`trunk-only`** (not
 deployed yet; packaging and CI are M8). If a request appears to conflict with this workflow,
 **surface the conflict before proceeding.**
 
