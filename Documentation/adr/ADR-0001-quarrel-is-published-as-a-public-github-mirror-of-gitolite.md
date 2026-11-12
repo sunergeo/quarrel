@@ -1,7 +1,7 @@
 # ADR-0001 — quarrel is published as a public GitHub mirror of gitolite, dual-licensed MIT OR Apache-2.0
 
-- **Status:** Proposed — becomes Accepted when `github.com/sunergeo/quarrel` exists and holds the
-  same `master` as `git:quarrel`.
+- **Status:** **Accepted 2026-11-12.** `github.com/sunergeo/quarrel` (public) and `git:quarrel` both
+  hold `master` = `1e08c94`, pushed origin first. *(Was Proposed until the mirror existed.)*
 - **Date:** 2026-11-12
 - **Deciders:** SB
 - **Scope:** Repo-level. Where quarrel is published, under what license, and which host is
@@ -26,7 +26,8 @@ reserved.
 2. **GitHub is a mirror on a separate remote**, `github = git@github.com:sunergeo/quarrel.git`.
    Push order is always **`origin` first, then `github`**, and `github` only receives what `origin`
    has already accepted. Never a multi-URL `origin`: each push URL is independent, so GitHub would
-   accept commits the gate refused.
+   accept commits the gate refused. `master`'s upstream is `origin/master`, so a bare `git push`
+   or `git pull` goes to gitolite; GitHub is always named explicitly (`git push github master`).
 3. **Mirrored refs:** `master`, and once the repo moves to `rolling-pair`, `release/*` and the
    `vX.Y.Z` tags, all after gitolite accepts them. Never `--mirror` or `--all`: working branches
    stay local.

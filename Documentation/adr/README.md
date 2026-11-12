@@ -12,4 +12,4 @@ Accepted · Superseded by ADR-NNNN · Deprecated. An amendment follows `governan
 
 | ID | Title | Status |
 |---|---|---|
-| [ADR-0001](./ADR-0001-quarrel-is-published-as-a-public-github-mirror-of-gitolite.md) | quarrel is published as a public GitHub mirror of gitolite, dual-licensed MIT OR Apache-2.0 | Proposed |
+| [ADR-0001](./ADR-0001-quarrel-is-published-as-a-public-github-mirror-of-gitolite.md) | quarrel is published as a public GitHub mirror of gitolite, dual-licensed MIT OR Apache-2.0 | Accepted |
