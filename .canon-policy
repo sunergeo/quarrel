@@ -1,0 +1,6 @@
+# Per-repo governance overlay for quarrel (argus, the per-host log shipper; read by the enforcement
+# layers alongside the org-tier git-branch-roles.md). Registered at scope=roster (branch/trunk policy +
+# scans); no specialist/auditor fleet stood up yet, so no reviewer is bound. When a fleet is added
+# (scope=full), bind it here, e.g.:
+#   master.review_reviewer=quarrel-auditor
+# Until then, master is not server-side review-gated for this repo (GOV-CR-0024).
