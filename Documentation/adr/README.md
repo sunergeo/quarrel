@@ -13,3 +13,7 @@ Accepted · Superseded by ADR-NNNN · Deprecated. An amendment follows `governan
 | ID | Title | Status |
 |---|---|---|
 | [ADR-0001](./ADR-0001-quarrel-is-published-as-a-public-github-mirror-of-gitolite.md) | quarrel is published as a public GitHub mirror of gitolite, dual-licensed MIT OR Apache-2.0 | Accepted |
+| [ADR-0002](./ADR-0002-quarrel-is-one-toolkit-a-shared-core-with-a-shipper-and-a-probe.md) | quarrel is one toolkit: a shared core with a shipper and a probe | Accepted |
+| [ADR-0003](./ADR-0003-quarrel-probe-is-portable-by-construction.md) | quarrel-probe is portable by construction: macOS first, Windows and Linux supported | Accepted |
+| [ADR-0004](./ADR-0004-quarrel-probe-measures-paths-the-way-mtr-does.md) | quarrel-probe measures paths the way MTR does, with timing it can defend | Proposed |
+| [ADR-0005](./ADR-0005-quarrel-emits-one-vendor-neutral-timestamped-event-stream.md) | quarrel emits one vendor-neutral, timestamped event stream | Accepted |
