@@ -1,10 +1,10 @@
-//! Tests for argus::scan.
+//! Tests for quarrel_shipper::scan.
 
 use std::io::Write;
 use std::path::Path;
 
-use argus::scan::complete_lines;
-use argus::scan::complete_lines_from;
+use quarrel_shipper::scan::complete_lines;
+use quarrel_shipper::scan::complete_lines_from;
 use tempfile::NamedTempFile;
 
 #[test]

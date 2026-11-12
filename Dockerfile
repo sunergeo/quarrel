@@ -1,12 +1,12 @@
 # syntax=docker/dockerfile:1
 #
-# Argus: ONE image for dev, staging and prod. What differs between environments
-# is runtime configuration (ARGUS_ENV today, a config file from M8), never the
+# quarrel-shipper: ONE image for dev, staging and prod. What differs between environments
+# is runtime configuration (QUARREL_ENV today, a config file from M8), never the
 # build.
 #
 # The build context is the repository root:
 #
-#   docker build -t argus:dev .
+#   docker build -t quarrel-shipper:dev .
 #
 # .dockerignore keeps local build output out of the context.
 #
@@ -24,16 +24,16 @@ WORKDIR /src
 COPY . ./
 
 # Tests run inside the build, so an image only exists if the tests pass. This is
-# also how CI will test Argus (roadmap M8).
+# also how CI will test the workspace (roadmap M8).
 # `--locked` refuses to build if Cargo.lock is missing or out of date.
 # The cache mounts keep downloaded crates and compiled output between builds;
 # because target/ is a cache mount, the binary is copied out in the same step.
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,target=/src/target \
-    cargo test --locked \
-    && cargo build --release --locked \
-    && cp target/release/argus /argus
+    cargo test --workspace --locked \
+    && cargo build --release --locked -p quarrel-shipper \
+    && cp target/release/quarrel-shipper /quarrel-shipper
 
 FROM scratch
-COPY --from=build /argus /argus
-ENTRYPOINT ["/argus"]
+COPY --from=build /quarrel-shipper /quarrel-shipper
+ENTRYPOINT ["/quarrel-shipper"]

@@ -1,6 +1,6 @@
-//! Tests for argus::state.
+//! Tests for quarrel_shipper::state.
 
-use argus::state::State;
+use quarrel_shipper::state::State;
 
 #[test]
 fn first_run_with_no_state_file_starts_empty() -> Result<(), Box<dyn std::error::Error>> {

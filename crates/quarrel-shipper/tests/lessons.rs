@@ -1,10 +1,10 @@
-//! Integration tests for `argus::lessons`.
+//! Integration tests for `quarrel_shipper::lessons`.
 //!
-//! Every file in `tests/` is compiled as its own small crate that uses Argus
+//! Every file in `tests/` is compiled as its own small crate that uses the shipper
 //! the way any outside code would: through its public API (`pub` items only).
 //! Run them with `cargo test`, or keep `bacon test` open while you work.
 
-use argus::lessons::{factorial, product};
+use quarrel_shipper::lessons::{factorial, product};
 
 #[test]
 fn factorial_of_zero_is_one() {

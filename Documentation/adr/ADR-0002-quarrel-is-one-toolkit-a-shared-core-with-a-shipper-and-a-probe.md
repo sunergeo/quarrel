@@ -1,7 +1,7 @@
 # ADR-0002 — quarrel is one toolkit: a shared core with a shipper and a probe
 
-- **Status:** **Accepted 2026-11-12.** Direction only; the workspace split and the crate rename are
-  not built yet (see Consequences).
+- **Status:** **Accepted 2026-11-12.** The workspace and the shipper rename are built (2026-11-12,
+  BL-0005); `quarrel-core` and `quarrel-probe` are not built yet (see Consequences).
 - **Date:** 2026-11-12
 - **Deciders:** SB
 - **Scope:** Repo-level. What quarrel is, how its code is divided, and what the parts are called.
@@ -50,7 +50,9 @@ happens.
 
 - **Moving `argus` into the workspace and renaming it to `quarrel-shipper` is a code change** with
   its own milestone. Until then `Cargo.toml` and the binary are still named `argus`, and the
-  shipper's M-numbered roadmap continues unchanged.
+  shipper's M-numbered roadmap continues unchanged. *(Built 2026-11-12, BL-0005: root workspace,
+  `crates/quarrel-shipper`, binary `quarrel-shipper`, env `QUARREL_ENV`. The M-numbered roadmap
+  continues unchanged.)*
 - **The probe gets its own milestone track** (P1–P6, see `ROADMAP.md`), separate from the shipper's
   M0–M8.
 - **Shared code is shared on purpose.** Changes to `quarrel-core` must keep both binaries' tests

@@ -5,7 +5,7 @@ and roughly in what order — **not** status, not dates. [`STATUS.md`](./STATUS.
 truth; if the two disagree, `STATUS.md` wins. Every line traces to a SOW or a `BL-NNNN`; shipped
 work leaves this file.
 
-Milestones (M0–M8) are argus's learning roadmap, carried over from the services repo. Shipped before
+Milestones (M0–M8) are the shipper's learning roadmap (it was `argus` until 2026-11-12), carried over from the services repo. Shipped before
 onboarding: M0 scaffold, M1 `scan`/`tail`, M2 persisted offsets.
 
 ## Now
@@ -24,8 +24,8 @@ onboarding: M0 scaffold, M1 `scan`/`tail`, M2 persisted offsets.
 
 Probe track (`BL-0004`; ADR-0002 to ADR-0005; each step needs a SOW before code):
 
-- **Workspace split.** `quarrel-core` + `quarrel-shipper` (today's `argus`, renamed) +
-  `quarrel-probe` (ADR-0002).
+- **Workspace split, the rest.** Add `quarrel-core` and `quarrel-probe` to the workspace (ADR-0002).
+  The workspace and `quarrel-shipper` exist since 2026-11-12 (BL-0005).
 - **P1 — ping one target.** ICMP echo, checksum, identifier/sequence numbers, datagram vs raw
   sockets, send/receive timing. macOS, Windows and Linux backends in CI (ADR-0003).
 - **P2 — many targets, one socket.** Reply matching, timeouts, send pacing. Accuracy compared with

@@ -3,7 +3,7 @@
 //!
 //! Run it with: `cargo run --example factorial`
 
-use argus::lessons::{factorial, product};
+use quarrel_shipper::lessons::{factorial, product};
 
 fn main() {
     let x: [f64; 0] = [];

@@ -1,6 +1,6 @@
 ---
 id: BL-0002
-title: argus exits when its file is missing and keys offsets by path, so rotation loses its place
+title: The shipper exits when its file is missing and keys offsets by path, so rotation loses its place
 type: Bug
 status: New
 horizon: now
@@ -17,7 +17,7 @@ severity: Major
 
 ## Summary
 
-Known gaps by design, recorded in the M1/M2 commits: `argus tail` exits on a missing file, and
+Known gaps by design, recorded in the M1/M2 commits: `argus tail` (now `quarrel-shipper tail`) exits on a missing file, and
 `state::State` keys offsets by path, so a rotated or renamed file resumes at the wrong offset. M3
 discovery is the planned fix; `fingerprint` (`d84c729`) is its first step and is not wired in yet.
 

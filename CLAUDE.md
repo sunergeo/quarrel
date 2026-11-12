@@ -13,10 +13,11 @@
 > **repo-local**: at roster scope there is no quarrel bundle in the platform-governance repo, so it is
 > edited here (if quarrel moves to scope full, its source moves there).
 
-quarrel holds **`argus`**, the per-host log shipper: a Rust crate (`Cargo.toml` name `argus`) that
-tails log files and ships the raw lines to an ingest endpoint, built as a static musl binary in a
-`scratch` image. It is built step by step along a milestone roadmap (M0–M2 shipped, M3 discovery in
-progress; see `ROADMAP.md`). Its one invariant: **never save a file offset past what the destination
+quarrel is one Cargo workspace (ADR-0002). Today it holds **`crates/quarrel-shipper`**, the per-host
+log shipper (formerly `argus`): it tails log files and ships the raw lines to an ingest endpoint,
+built as a static musl binary in a `scratch` image. `quarrel-core` and `quarrel-probe` are planned.
+Run commands from the repo root; `cargo test` covers the workspace. The shipper is built step by step along a milestone roadmap (M0–M2 shipped, M3 discovery
+in progress; see `ROADMAP.md`). Its one invariant: **never save a file offset past what the destination
 has acknowledged** — a duplicate is harmless, a skipped line is the only real failure. Server-side
 repo name: `git:quarrel` (the system of record); public mirror
 `github` = `github.com/sunergeo/quarrel`, pushed **after** `origin` accepts (ADR-0001). Governed at **`scope: roster`**, release model **`trunk-only`** (not
@@ -47,8 +48,8 @@ deployed yet; packaging and CI are M8). If a request appears to conflict with th
    Reviews → then the code; if any upstream doc is missing, STOP and report the gap
    (`governance-core` §10). No dedicated auditor exists at roster scope.
 10. **Never delete history** — archive to `Outcomes/_archived/<slug>/` (flattened) on a passing DoD.
-11. **All real logic lives in `src/lib.rs` and its modules**; `src/main.rs` stays a thin shell, so
-    tests can reach everything. `Cargo.lock` is committed; the Docker build runs `--locked`.
+11. **All real logic lives in each crate's `src/lib.rs` and its modules**; `src/main.rs` stays a thin
+    shell, so tests can reach everything. `Cargo.lock` is committed; the Docker build runs `--locked`.
 12. **Git/branch/release discipline applies** — integration trunk **`master`**, `--ff-only` merges,
     one clean commit per feature, no merge commits, feature branches deleted after merge. See
     `governance-core` §11.
@@ -56,7 +57,7 @@ deployed yet; packaging and CI are M8). If a request appears to conflict with th
     ff-able commit → `--ff-only` merge → ask before deleting the branch). Never commit/edit on
     `master`; never `--no-ff`; never force-push a protected ref.
 14. **Release model is `trunk-only`.** There are no release refs yet. Moving to `rolling-pair` when
-    argus is first deployed is a §11 governed operation (ADR + refs + roster in one effort).
+    the shipper is first deployed is a §11 governed operation (ADR + refs + roster in one effort).
     The services-release tags the extraction carried were deleted before the first push (BL-0001).
 15. **Deletion is always confirmed; never route around a block.** In Cowork, `Operation not
     permitted`/EPERM on a delete (or a git step that must unlink) means call

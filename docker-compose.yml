@@ -1,7 +1,7 @@
-# Argus, local dev.
+# quarrel-shipper, local dev.
 #
 #   docker compose up --build      # build the image (tests run inside) and run it
-#   docker compose run --rm argus --version
+#   docker compose run --rm quarrel-shipper --version
 #
 # Builds the same image staging and prod will run; only the environment
 # differs. Deployment wiring arrives at roadmap M8.
@@ -12,14 +12,14 @@
 # arrive in M1, with the first files to tail.
 
 services:
-  argus:
+  quarrel-shipper:
     build:
       context: .
       dockerfile: Dockerfile
-    image: argus:dev
-    container_name: argus
+    image: quarrel-shipper:dev
+    container_name: quarrel-shipper
     environment:
-      ARGUS_ENV: dev
+      QUARREL_ENV: dev
     read_only: true
     cap_drop: [ALL]
     security_opt: ["no-new-privileges:true"]

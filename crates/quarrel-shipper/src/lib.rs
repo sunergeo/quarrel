@@ -1,7 +1,7 @@
-//! Argus: the per-host log shipper.
+//! quarrel-shipper: the per-host log shipper.
 //!
-//! One Argus runs on each host. It tails log files and ships the raw lines to
-//! an ingest endpoint. Parsing happens downstream, not here; Argus is a dumb,
+//! One shipper runs on each host. It tails log files and ships the raw lines to
+//! an ingest endpoint. Parsing happens downstream, not here; the shipper is a dumb,
 //! reliable shipper.
 //!
 //! The one invariant: never save a file offset past what the destination has
@@ -21,14 +21,14 @@ pub const NAME: &str = env!("CARGO_PKG_NAME");
 /// The crate version, read from `Cargo.toml` at compile time.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
-/// What `argus --version` prints, e.g. `argus 0.1.0`.
+/// What `quarrel-shipper --version` prints, e.g. `quarrel-shipper 0.1.0`.
 pub fn version_line() -> String {
     format!("{NAME} {VERSION}")
 }
 
-/// The environment Argus is running in, from `ARGUS_ENV` (defaults to `dev`).
+/// The environment the shipper is running in, from `QUARREL_ENV` (defaults to `dev`).
 pub fn environment() -> String {
-    std::env::var("ARGUS_ENV").unwrap_or_else(|_| String::from("dev"))
+    std::env::var("QUARREL_ENV").unwrap_or_else(|_| String::from("dev"))
 }
 
 /// Run the agent. Today: announce itself and exit. M1 replaces the body with
