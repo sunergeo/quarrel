@@ -1,6 +1,6 @@
 ---
 id: BL-0001
-title: The extraction from services carried 87 services-release tags into quarrel
+title: The extraction from services carried 85 services-release tags into quarrel
 type: Process-idea
 status: Closed
 horizon: now
@@ -16,7 +16,7 @@ disposition: "Option 1 — deleted locally before the first push (SB, 2026-11-12
 
 ## Summary
 
-quarrel was extracted from the services repo with its history. The extraction kept 87 tags
+quarrel was extracted from the services repo with its history. The extraction kept 85 tags
 (`v0.11.1` … `v0.13.7-rc2`, `jenkins-lib-v1.17.0` … `v1.20.0`), rewritten to point at quarrel's
 four argus commits. They name **services** releases; quarrel has never been released
 (`releaseModel: trunk-only`).
@@ -35,4 +35,4 @@ the server, so they could not be cleanly removed later. Until decided, push `mas
 ## Log
 
 - 2026-11-12 — Found during onboarding (GOV-CR-0024).
-- 2026-11-12 — SB chose option 1: all 87 tags deleted locally before the first push.
+- 2026-11-12 — SB chose option 1: all 85 tags deleted locally before the first push.

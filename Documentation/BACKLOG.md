@@ -8,6 +8,6 @@ _Next id: `BL-0003` (generated; capture new items with this id)._
 ### Now
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|
-| BL-0001 | The extraction from services carried 87 services-release tags into quarrel | Process-idea | — | — | Closed | [·](Backlog/BL-0001-services-release-tags-carried-into-quarrel.md) |
+| BL-0001 | The extraction from services carried 85 services-release tags into quarrel | Process-idea | — | — | Closed | [·](Backlog/BL-0001-services-release-tags-carried-into-quarrel.md) |
 | BL-0002 | argus exits when its file is missing and keys offsets by path, so rotation loses its place | Bug | Major | — | New | [·](Backlog/BL-0002-argus-exits-on-a-missing-file-and-keys-offsets-by-path.md) |
 <!-- END GENERATED INDEX -->
