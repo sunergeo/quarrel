@@ -4,7 +4,7 @@ title: The shipper exits when its file is missing and keys offsets by path, so r
 type: Bug
 status: New
 horizon: now
-big_idea: null
+big_idea: BI-02
 reporter: SB (via Cowork agent)
 opened: 2026-11-12
 updated: 2026-11-12

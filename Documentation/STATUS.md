@@ -13,6 +13,9 @@ with other ingest protocols adapt on their side, against the documented contract
 is a tracked gap (BL-0006). A demo consumer (`quarrel-demo`: OTLP receiver, test mode, React
 dashboard; ADR-0009) is planned and doubles as the test collector.
 
+Big Ideas (`BIG-IDEAS.md`): BI-02 never lose a line (on), BI-01 see the network as it is
+(simmering), BI-03 explain where the time goes (sleeping).
+
 Onboarded 2026-11-12 (GOV-CR-0024) at `scope: roster`, `releaseModel: trunk-only`.
 Shipped before onboarding: argus M0–M2 (`scan`, `tail`, persisted offsets) and M3 step 1
 (`fingerprint`). Not deployed. Open signal: `BACKLOG.md`; intent: `ROADMAP.md`.

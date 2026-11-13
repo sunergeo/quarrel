@@ -4,7 +4,7 @@ title: quarrel-shipper's OTLP output contract is not yet documented for consumer
 type: Doc-debt
 status: Triaged
 horizon: next
-big_idea: null
+big_idea: BI-02
 reporter: SB (via Cowork agent)
 opened: 2026-11-13
 updated: 2026-11-13

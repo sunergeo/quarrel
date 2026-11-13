@@ -4,7 +4,7 @@ title: Decide the probe's I/O model, async (Tokio) or a synchronous poll loop ov
 type: Standard-gap
 status: New
 horizon: next
-big_idea: null
+big_idea: BI-01
 reporter: SB (via Cowork agent)
 opened: 2026-11-12
 updated: 2026-11-12

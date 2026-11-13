@@ -4,7 +4,7 @@ title: quarrel has no network probe yet, only the shipper
 type: Process-idea
 status: Triaged
 horizon: someday
-big_idea: null
+big_idea: BI-01
 reporter: SB (via Cowork agent)
 opened: 2026-11-12
 updated: 2026-11-12

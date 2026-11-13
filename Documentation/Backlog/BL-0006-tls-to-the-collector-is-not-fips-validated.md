@@ -4,7 +4,7 @@ title: TLS to the collector is not FIPS-validated, so quarrel cannot yet serve r
 type: Standard-gap
 status: Triaged
 horizon: next
-big_idea: null
+big_idea: BI-02
 reporter: SB (via Cowork agent)
 opened: 2026-11-13
 updated: 2026-11-13

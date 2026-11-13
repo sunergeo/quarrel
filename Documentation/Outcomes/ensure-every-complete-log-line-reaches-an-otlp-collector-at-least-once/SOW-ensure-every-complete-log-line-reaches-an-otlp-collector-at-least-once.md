@@ -4,7 +4,7 @@
 **Created:** 2026-11-13
 **Last updated:** 2026-11-13
 **Owner:** SB
-**Big idea:** —
+**Big idea:** BI-02 (never lose a line)
 
 ---
 

@@ -4,7 +4,7 @@ title: "Possible enhancement: native Windows and macOS desktop clients for quarr
 type: Process-idea
 status: New
 horizon: someday
-big_idea: null
+big_idea: BI-01
 reporter: SB (via Cowork agent)
 opened: 2026-11-13
 updated: 2026-11-13

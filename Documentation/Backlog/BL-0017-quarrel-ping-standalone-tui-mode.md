@@ -4,7 +4,7 @@ title: quarrel-ping has no standalone terminal UI for watching a path live (plan
 type: Process-idea
 status: Triaged
 horizon: someday
-big_idea: null
+big_idea: BI-01
 reporter: SB (via Cowork agent)
 opened: 2026-11-13
 updated: 2026-11-13

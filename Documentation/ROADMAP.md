@@ -3,7 +3,7 @@
 Forward-looking intent, grouped **Now · Next · Later** (`governance-core` §1). What we intend to do
 and roughly in what order — **not** status, not dates. [`STATUS.md`](./STATUS.md) is the source of
 truth; if the two disagree, `STATUS.md` wins. Every line traces to a SOW or a `BL-NNNN`; shipped
-work leaves this file.
+work leaves this file. Strategy sits one level up, in [`BIG-IDEAS.md`](./BIG-IDEAS.md).
 
 Milestones (M0–M8) are the shipper's milestone roadmap (it was `argus` until 2026-11-12), carried over from its previous repository. Shipped before
 onboarding: M0 scaffold, M1 `scan`/`tail`, M2 persisted offsets.
@@ -57,8 +57,14 @@ bottlenecks (ADR-0008):
 - **P6 — layer 2 (optional).** ARP/NDP via BPF, `AF_PACKET` or Npcap; needs privileges
   (ADR-0003).
 
+- **Two-ended mode** (`BL-0024`, candidate): a responder for one-way latency and the return path.
+- **DNS observability** (`BL-0023`, candidate, BI-01).
 - **TUI mode** (`BL-0017`, planned): run quarrel-ping standalone and watch a path live, no collector.
 - **Native Windows/macOS clients** (`BL-0018`, possible enhancement, not committed).
+
+Candidate tools (BI-03, sleeping):
+
+- **Application-layer timing checks** (`BL-0022`): network, resolver or service?
 
 Shipper track:
 

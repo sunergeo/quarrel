@@ -4,7 +4,7 @@ title: Choose quarrel-ping's network-ownership datasets (prefix to AS, AS to org
 type: Standard-gap
 status: Triaged
 horizon: next
-big_idea: null
+big_idea: BI-01
 reporter: SB (via Cowork agent)
 opened: 2026-11-13
 updated: 2026-11-13

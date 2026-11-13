@@ -4,7 +4,7 @@ title: quarrel has no demo consumer, so there is nothing to send telemetry to or
 type: Process-idea
 status: Triaged
 horizon: now
-big_idea: null
+big_idea: BI-02
 reporter: SB (via Cowork agent)
 opened: 2026-11-13
 updated: 2026-11-13
