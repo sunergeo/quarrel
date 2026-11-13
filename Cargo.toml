@@ -1,6 +1,7 @@
 # quarrel: one Cargo workspace (ADR-0002).
 #
 #   crates/quarrel-shipper   tails log files and forwards them without losing a line
+#   crates/quarrel-demo      (planned) demo consumer: OTLP receiver, test mode, React dashboard
 #   crates/quarrel-lessons   tested exercises, one module per idea; never shipped
 #   crates/quarrel-core      (planned) the shared event model, buffer, outputs and state
 #   crates/quarrel-ping      (planned) network observability: segments, routing, latency, bottlenecks

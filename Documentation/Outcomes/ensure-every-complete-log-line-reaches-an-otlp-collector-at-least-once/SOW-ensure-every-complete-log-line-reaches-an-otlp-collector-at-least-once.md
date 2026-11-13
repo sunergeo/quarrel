@@ -42,7 +42,8 @@ health (NG4), FIPS TLS where required (NG6) and packaging (NG7) are also needed.
   - HTTPS with verification on by default, a bearer token or headers from config; the token never
     appears in output.
   - Configuration from a TOML file, with the same keys overridable from environment variables.
-  - A test collector (OQ1) that records what it receives and can return any response on demand.
+  - The test collector: `quarrel-demo`'s receiver and test mode (D6, ADR-0009), recording what it
+    receives and returning any response on demand. Its dashboard is not in this SOW's scope.
   - Builds and passes the scenarios on macOS, Linux and Windows.
 
 ### Out of scope (explicit)
@@ -64,7 +65,7 @@ health (NG4), FIPS TLS where required (NG6) and packaging (NG7) are also needed.
 
 ## 4. Acceptance Criteria (Definition of Done)
 
-Run against the test collector (OQ1) and, once, against a stock OpenTelemetry Collector. "Lines in
+Run against the test collector (D6) and, once, against a stock OpenTelemetry Collector. "Lines in
 the file" and "records received" are compared by the dedupe key `(host.name,
 quarrel.file.fingerprint, quarrel.file.offset)`.
 
@@ -118,12 +119,13 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
 | D3 | Dedupe key `(host.name, quarrel.file.fingerprint, quarrel.file.offset)` | ADR-0007 §2 |
 | D4 | Plain TLS now; FIPS later | SB 2026-11-13; BL-0006 |
 | D5 | macOS, Linux and Windows are all supported for the shipper | SB 2026-11-13; ADR-0006 §3 |
+| D6 | The test collector is `quarrel-demo`'s test mode; one run also goes against a stock OpenTelemetry Collector | SB 2026-11-13; ADR-0009 §2–§3 |
 
 ## 6. Open Questions
 
-- **OQ1 — Test collector.** Write a small in-repo test receiver (records batches, returns scripted
+- ~~**OQ1 — Test collector.** Write a small in-repo test receiver (records batches, returns scripted
   responses), or drive a stock `otelcol` with a file exporter? The in-repo one is needed for Sc6
-  either way; the stock one proves interoperability.
+  either way; the stock one proves interoperability.~~ **Resolved 2026-11-13 → D6** (ADR-0009 §2).
 - **OQ2 — CI before M8.** Sc9 needs a three-OS CI matrix now, not at M8. Where does it run, given
   gitolite is the system of record (ADR-0001)? GitHub Actions on the mirror is the obvious host;
   results would be advisory, not a gate.
@@ -164,6 +166,7 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-13 — OQ1 resolved → D6 (the demo consumer's test mode, ADR-0009).
 - 2026-11-13 — Created from SB's rulings (purpose, OTLP, first SOW = first real shipping, all three
   platforms).
 

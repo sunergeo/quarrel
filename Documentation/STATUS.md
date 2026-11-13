@@ -10,7 +10,8 @@ The at-a-glance view of this repo's outcomes (canon `governance-core` §0). Each
 Purpose (ADR-0006, 2026-11-13): production-grade observability tooling, vendor-neutral; learning and
 the portfolio are by-products. The shipper delivers over OTLP/HTTP (ADR-0007, Proposed); consumers
 with other ingest protocols adapt on their side, against the documented contract (BL-0007). FIPS TLS
-is a tracked gap (BL-0006).
+is a tracked gap (BL-0006). A demo consumer (`quarrel-demo`: OTLP receiver, test mode, React
+dashboard; ADR-0009) is planned and doubles as the test collector.
 
 Onboarded 2026-11-12 (GOV-CR-0024) at `scope: roster`, `releaseModel: trunk-only`.
 Shipped before onboarding: argus M0–M2 (`scan`, `tail`, persisted offsets) and M3 step 1
@@ -35,3 +36,4 @@ and emits one vendor-neutral event stream (ADR-0005, Accepted). Its measurement 
 | ADR-0006 | Accepted |
 | ADR-0007 | Proposed |
 | ADR-0008 | Accepted |
+| ADR-0009 | Accepted |

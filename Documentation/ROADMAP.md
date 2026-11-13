@@ -15,6 +15,9 @@ onboarding: M0 scaffold, M1 `scan`/`tail`, M2 persisted offsets.
   and an hour-long outage on macOS, Linux and Windows. SB's first priority (2026-11-13). Its open
   questions (test collector, CI, resource budget, I/O model) come first.
 
+- **Demo consumer, receiver and test mode first** (`BL-0019`, ADR-0009): the shipping SOW's test
+  collector (D6). The React dashboard follows: shipper views now, quarrel-ping views after P2/P3.
+
 - **M3 — discovery.** Step 1 landed (`fingerprint`: a file's identity by the sha256 of its first
   bytes, `d84c729`). Next: key offsets by fingerprint, survive rename/rotation, and stop exiting on
   a missing file (`BL-0002`). Needs a SOW before more code.
@@ -26,6 +29,8 @@ onboarding: M0 scaffold, M1 `scan`/`tail`, M2 persisted offsets.
 - **Health** (shipping SOW NG4): health as OTLP metrics, honest per ADR-0006 §3.
 
 - **Document the OTLP output contract** for consumers building a receiver or adapter (`BL-0007`).
+
+- **Stock-stack recipe** (`BL-0020`): quarrel feeding an OpenTelemetry Collector and Grafana.
 
 - **FIPS-validated TLS** (`BL-0006`): for regulated deployments that require it.
 

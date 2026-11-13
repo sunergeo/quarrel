@@ -4,11 +4,12 @@ Untriaged signal. One file per item under `Backlog/`; this index is generated
 (`canon-index index`) and never hand-edited.
 
 <!-- BEGIN GENERATED INDEX — do not edit by hand; run `canon-index` -->
-_Next id: `BL-0019` (generated; capture new items with this id)._
+_Next id: `BL-0021` (generated; capture new items with this id)._
 ### Now
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|
 | BL-0002 | The shipper exits when its file is missing and keys offsets by path, so rotation loses its place | Bug | Major | — | New | [·](Backlog/BL-0002-argus-exits-on-a-missing-file-and-keys-offsets-by-path.md) |
+| BL-0019 | quarrel has no demo consumer, so there is nothing to send telemetry to or look at, and no controllable test collector | Process-idea | — | — | Triaged | [·](Backlog/BL-0019-quarrel-has-no-demo-consumer-to-receive-and-show-its-telemetry.md) |
 ### Next
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|
@@ -16,6 +17,7 @@ _Next id: `BL-0019` (generated; capture new items with this id)._
 | BL-0006 | TLS to the collector is not FIPS-validated, so quarrel cannot yet serve regulated environments that require it | Standard-gap | — | — | Triaged | [·](Backlog/BL-0006-tls-to-the-collector-is-not-fips-validated.md) |
 | BL-0007 | quarrel-shipper's OTLP output contract is not yet documented for consumers who need to build a receiver or adapter | Doc-debt | — | — | Triaged | [·](Backlog/BL-0007-the-otlp-output-contract-is-not-yet-documented-for-consumers.md) |
 | BL-0016 | Choose quarrel-ping's network-ownership datasets (prefix to AS, AS to organisation, exchange points) and check their licences | Standard-gap | — | — | Triaged | [·](Backlog/BL-0016-choose-the-network-ownership-datasets-and-check-their-licences.md) |
+| BL-0020 | No documented recipe shows quarrel feeding a stock OpenTelemetry Collector and open-source dashboards | Doc-debt | — | — | Triaged | [·](Backlog/BL-0020-no-documented-recipe-for-quarrel-with-a-stock-opentelemetry-stack.md) |
 ### Someday
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|

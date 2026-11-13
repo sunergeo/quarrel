@@ -10,6 +10,7 @@ Quarrel is an open-source Rust toolkit for host-side observability: one Cargo wo
 | `crates/quarrel-shipper` | In development. The per-host log shipper: tails log files and ships the raw lines to an ingest endpoint. A static binary in a `scratch` image. |
 | `quarrel-core` | Planned: the shared event model, buffer, outputs and state. |
 | `quarrel-ping` | Planned: PingPlotter-style network observability for a defined system. Continuously traces the paths between its endpoints: segments and who owns them, routing and route changes, per-hop latency and loss, and where bottlenecks are. |
+| `quarrel-demo` | Planned: a demo consumer in one Docker image. An OTLP endpoint both tools can send to, and a web dashboard showing how to use them. For demos, development and testing, not production. |
 
 This file is how to work on it. Run every command from the repository root.
 

@@ -57,7 +57,8 @@ happens.
    come later; a desktop or web front end is out of scope.~~
    **⚠ Amended 2026-11-13 by `ADR-0008` §4:** for observability, quarrel only emits OTLP and
    consumers build their own dashboards. quarrel-ping will gain a standalone TUI mode (planned), and
-   native Windows/macOS clients are a possible enhancement. A web front end remains out of scope.
+   native Windows/macOS clients are a possible enhancement. The tools have no web front end; the
+   demo consumer does (ADR-0009).
 
 ## Consequences
 
