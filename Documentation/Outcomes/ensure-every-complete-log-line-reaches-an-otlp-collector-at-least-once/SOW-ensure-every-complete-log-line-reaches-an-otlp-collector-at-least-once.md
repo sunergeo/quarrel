@@ -103,6 +103,9 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   matrix (OQ2).
 - [ ] **Sc10 — Resource budget.** Shipping 1,000 lines/s for 10 minutes, and buffering through Sc5,
   stays within the memory budget set in OQ3. Test path: soak with peak RSS recorded.
+- [ ] **README reflects this outcome** (ADR-0010): the shipper row says it ships over OTLP at least
+  once (and no more than is proven); commands and configuration are documented;
+  `scripts/check-readme.sh` passes.
 
 ## 5. Architectural notes
 

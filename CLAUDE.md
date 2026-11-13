@@ -43,6 +43,10 @@ deployed yet; packaging and CI are M8). If a request appears to conflict with th
    regenerated into `BACKLOG.md`), not as a premature SOW.
 6. **SOW Status is explicit and never inferred from folder location**; log transitions in the SOW.
 7. **Keep the chain in sync, same session** (downstream doc → SOW; Status/ADR → `STATUS.md`).
+   **The README is in the chain** (ADR-0010): it is the public front page, so any change that alters
+   what it describes (an ADR, an SOW status, a crate, command, env var or image, a release, the
+   contribution route) updates `README.md` in the same change. Claim a capability only once its
+   outcome is Done.
 8. **Every downstream doc cites its lineage**; require a SOW reference — no orphan docs.
 9. **Code reviews are lineage-grounded** — read SOW → Architecture → all Engineering plans → prior
    Reviews → then the code; if any upstream doc is missing, STOP and report the gap
@@ -56,6 +60,8 @@ deployed yet; packaging and CI are M8). If a request appears to conflict with th
 13. **"Promote/merge/roll into master"** → the §11 promote procedure (working branch → squash to one
     ff-able commit → `--ff-only` merge → ask before deleting the branch). Never commit/edit on
     `master`; never `--no-ff`; never force-push a protected ref.
+    Every rollup also checks the README against the change and runs `scripts/check-readme.sh`;
+    drift stops the promotion (ADR-0010).
 14. **Release model is `trunk-only`.** There are no release refs yet. Moving to `rolling-pair` when
     the shipper is first deployed is a §11 governed operation (ADR + refs + roster in one effort).
     The release tags the extraction carried over were deleted before the first push (BL-0001).

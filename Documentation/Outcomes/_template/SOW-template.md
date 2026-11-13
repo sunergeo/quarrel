@@ -58,6 +58,8 @@ X; observe Y (within Z)."
 
 - [ ] **Sc1 — <short name>.** <action or trigger>. Expected: <observable outcome, and timing where it matters>. Test path: <how to run — e2e spec, script, manual repro steps, log/metric to watch>.
 - [ ] **Sc2 — …**
+- [ ] **README reflects this outcome** (ADR-0010): what it can now claim, statuses, commands and
+  layout; `scripts/check-readme.sh` passes.
 - [ ] (For multi-component SOWs) Per-component status:
   - `<component>`: [ ] Pass [ ] Fail
   - `<component>`: [ ] Pass [ ] Fail [ ] N/A — out of scope

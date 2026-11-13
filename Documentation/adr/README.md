@@ -21,3 +21,4 @@ Accepted · Superseded by ADR-NNNN · Deprecated. An amendment follows `governan
 | [ADR-0007](./ADR-0007-quarrel-shipper-delivers-over-otlp-http-and-advances-only-on-acknowledgement.md) | quarrel-shipper delivers over OTLP/HTTP and advances only on acknowledgement | Proposed |
 | [ADR-0008](./ADR-0008-the-network-tool-is-quarrel-ping-and-it-observes-network-traffic-within-a-defined-system.md) | The network tool is quarrel-ping: observability into what network traffic actually does within a defined system | Accepted |
 | [ADR-0009](./ADR-0009-quarrel-ships-a-demo-consumer-for-demonstration-development-and-testing.md) | quarrel ships a demo consumer for demonstration, development and testing | Accepted |
+| [ADR-0010](./ADR-0010-the-readme-is-the-public-front-page-and-every-change-keeps-it-current.md) | The README is the public front page, and every change keeps it current | Accepted |

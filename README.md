@@ -80,6 +80,7 @@ docker build -t quarrel-shipper:dev .
 | `crates/quarrel-shipper/src/main.rs` | The shipper binary. A thin shell over the library. |
 | `crates/quarrel-shipper/tests/` | Integration tests. Each file is its own crate using the public API. |
 | `crates/quarrel-lessons/` | Tested exercises, one module per main idea (`src/lib.rs` lists them); never shipped. Examples: `cargo run -p quarrel-lessons --example <name>`. |
+| `scripts/check-readme.sh` | Catches drift between this README and the repository; every change keeps the README current ([ADR-0010](Documentation/adr/ADR-0010-the-readme-is-the-public-front-page-and-every-change-keeps-it-current.md)). |
 | `Dockerfile` | Static musl build → `scratch`. Tests run inside the build. |
 | `docker-compose.yml` | Local dev only. |
 | `Documentation/` | The plans, versioned with the code: `BIG-IDEAS.md` and `BigIdeas/` (strategy), `STATUS.md`, `ROADMAP.md`, `Outcomes/` (one statement of work per outcome), `BACKLOG.md` and `Backlog/`, `adr/` (decisions). |
