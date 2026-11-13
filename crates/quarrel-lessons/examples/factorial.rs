@@ -1,9 +1,9 @@
 //! The day-2 warm-up, unchanged except that `factorial` and `product` now live
-//! in the library (`src/lessons.rs`) where they're tested.
+//! in the lessons library (`src/checked_arithmetic.rs`) where they're tested.
 //!
-//! Run it with: `cargo run --example factorial`
+//! Run it with: `cargo run -p quarrel-lessons --example factorial`
 
-use quarrel_shipper::lessons::{factorial, product};
+use quarrel_lessons::checked_arithmetic::{factorial, product};
 
 fn main() {
     let x: [f64; 0] = [];

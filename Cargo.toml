@@ -1,14 +1,15 @@
 # quarrel: one Cargo workspace (ADR-0002).
 #
 #   crates/quarrel-shipper   tails log files and forwards them without losing a line
+#   crates/quarrel-lessons   tested exercises, one module per idea; never shipped
 #   crates/quarrel-core      (planned) the shared event model, buffer, outputs and state
-#   crates/quarrel-probe     (planned) the network probe
+#   crates/quarrel-ping      (planned) network observability: segments, routing, latency, bottlenecks
 #
 # Commands run from this directory: `cargo test` tests every crate;
 # `cargo run -p quarrel-shipper -- <args>` runs the shipper.
 
 [workspace]
-members = ["crates/quarrel-shipper"]
+members = ["crates/quarrel-shipper", "crates/quarrel-lessons"]
 resolver = "3"
 
 [workspace.package]

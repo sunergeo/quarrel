@@ -1,0 +1,17 @@
+[package]
+name = "quarrel-lessons"
+description = "Tested exercises kept beside quarrel, never on its shipping path"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+publish.workspace = true
+
+# Nothing in quarrel depends on this crate, and it never ships in a binary or an image.
+# One module per main idea (see src/lib.rs); each has its tests in tests/<idea>.rs and,
+# where useful, a runnable example in examples/.
+
+[dependencies]
+
+[dev-dependencies]

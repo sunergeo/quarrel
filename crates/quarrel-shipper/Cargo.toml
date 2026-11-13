@@ -11,9 +11,7 @@ publish.workspace = true
 # Layout (the Cargo conventions, nothing custom), relative to this crate:
 #   src/lib.rs      the library: all real logic lives here, so tests can reach it
 #   src/main.rs     the binary: a thin shell that calls into the library
-#   src/lessons.rs  warm-up exercises kept as real, tested code
 #   tests/*.rs      integration tests (each file is its own test crate)
-#   examples/*.rs   runnable examples: `cargo run -p quarrel-shipper --example factorial`
 
 [dependencies]
 serde = { version = "1.0.229", features = ["derive"] }

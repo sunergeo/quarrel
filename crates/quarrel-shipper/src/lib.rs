@@ -11,7 +11,6 @@
 //! Built step by step along a learning roadmap. Today it only knows its own name; tailing arrives in M1.
 
 pub mod fingerprint;
-pub mod lessons;
 pub mod scan;
 pub mod state;
 

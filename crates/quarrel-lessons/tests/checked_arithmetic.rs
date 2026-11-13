@@ -1,10 +1,10 @@
-//! Integration tests for `quarrel_shipper::lessons`.
+//! Integration tests for `quarrel_lessons::checked_arithmetic`.
 //!
-//! Every file in `tests/` is compiled as its own small crate that uses the shipper
-//! the way any outside code would: through its public API (`pub` items only).
+//! Every file in `tests/` is compiled as its own small crate that uses the lessons
+//! crate the way any outside code would: through its public API (`pub` items only).
 //! Run them with `cargo test`, or keep `bacon test` open while you work.
 
-use quarrel_shipper::lessons::{factorial, product};
+use quarrel_lessons::checked_arithmetic::{factorial, product};
 
 #[test]
 fn factorial_of_zero_is_one() {

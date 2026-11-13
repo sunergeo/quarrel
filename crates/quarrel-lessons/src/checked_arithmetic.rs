@@ -1,8 +1,8 @@
-//! Warm-up exercises (roadmap Stage 1), kept as real, tested code.
+//! Checked arithmetic: overflow is an error you handle, not a surprise.
 //!
-//! The agent never calls these. They stay because the habits they taught are
-//! the ones the shipper runs on: checked arithmetic instead of silent overflow, and
-//! `Option` plus `?` instead of panics.
+//! The first warm-ups (roadmap Stage 1). The shipper never calls these; the
+//! habits they teach are the ones it runs on: checked arithmetic instead of
+//! silent overflow (its byte offsets), and `Option` plus `?` instead of panics.
 //!
 //! The lines starting with `///` are documentation. A fenced code block inside
 //! them is a *doc test*: `cargo test` compiles and runs it, so the examples in
@@ -15,7 +15,7 @@
 /// the function.
 ///
 /// ```
-/// use quarrel_shipper::lessons::factorial;
+/// use quarrel_lessons::checked_arithmetic::factorial;
 ///
 /// assert_eq!(factorial(5), Some(120));
 /// assert_eq!(factorial(21), None); // 21! > u64::MAX
@@ -35,7 +35,7 @@ pub fn factorial(n: u64) -> Option<u64> {
 /// a `Vec` or part of either, without taking ownership of them.
 ///
 /// ```
-/// use quarrel_shipper::lessons::product;
+/// use quarrel_lessons::checked_arithmetic::product;
 ///
 /// assert_eq!(product(&[2.0, 3.0, 4.0]), 24.0);
 /// ```
