@@ -1,7 +1,7 @@
 # ADR-0002 — quarrel is one toolkit: a shared core with a shipper and a probe
 
 - **Status:** **Accepted 2026-11-12.** The workspace and the shipper rename are built (2026-11-12,
-  BL-0005); `quarrel-core` and `quarrel-ping` (formerly `quarrel-probe`) are not built yet (see Consequences).
+  BL-0005); `quarrel-core` and `quarrel-ping` are not built yet (see Consequences).
 - **Date:** 2026-11-12
 - **Amended:** 2026-11-13 by `ADR-0006` (purpose: production-grade tooling; Context, third
   paragraph); 2026-11-13 by `ADR-0008` (the network tool is `quarrel-ping`; §1, §4, §5)

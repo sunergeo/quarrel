@@ -6,8 +6,8 @@
 - **Deciders:** SB
 - **Scope:** Repo-level. The network tool's name, what it is for, and the capabilities that purpose
   requires.
-- **Amends:** ADR-0002 §1 and §4 (the crate was `quarrel-probe`); the titles of ADR-0003 and
-  ADR-0004, whose decisions now apply to `quarrel-ping` unchanged.
+- **Amends:** ADR-0002 §1, §4 and §5; the titles of ADR-0003 and ADR-0004, whose decisions now apply
+  to `quarrel-ping` unchanged.
 - **Related:** ADR-0004 (measurement model); ADR-0005 (outputs); ADR-0006 §4 (where it runs in a given
   deployment, open); BL-0004.
 
@@ -106,9 +106,8 @@ use case, the one PingPlotter is best known for, not the definition.
 
 ## Consequences
 
-- Every live reference to `quarrel-probe` becomes `quarrel-ping`. ADR-0003 and ADR-0004 keep their
-  file names (ids are immutable) and carry an amendment note; ADR-0002's naming clauses are struck
-  through and marked inline.
+- The new name is used everywhere. ADR-0003 and ADR-0004 are retitled (their numbers are unchanged);
+  ADR-0002's naming clauses are struck through and marked inline, as `governance-core` §9.1 requires.
 - The P1–P6 roadmap stands, but P2/P3 gain "over time, with history", a declared set of paths, and
   segment and shared-segment output; they belong in the first quarrel-ping SOW's DoD.
 - Network ownership becomes P3 scope (it needs hops); its dataset choice and licence check are

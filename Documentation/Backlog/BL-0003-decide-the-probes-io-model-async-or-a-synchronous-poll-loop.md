@@ -8,7 +8,7 @@ big_idea: null
 reporter: SB (via Cowork agent)
 opened: 2026-11-12
 updated: 2026-11-12
-affected: ADR-0003 §4; quarrel-ping, formerly quarrel-probe (not yet built)
+affected: ADR-0003 §4; quarrel-ping (not yet built)
 disposition: null
 ---
 

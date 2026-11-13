@@ -1,10 +1,9 @@
-# ADR-0004 — quarrel-probe measures paths the way MTR does, with timing it can defend
+# ADR-0004 — quarrel-ping measures paths the way MTR does, with timing it can defend
 
 - **Status:** **Proposed 2026-11-12.** This is the recommended measurement model; SB has not yet
   ruled on it clause by clause. It becomes Accepted when P1–P3 confirm it in code.
 - **Date:** 2026-11-12
-- **Amended:** 2026-11-13 by `ADR-0008`: the tool is named `quarrel-ping` (was `quarrel-probe`).
-  This decision applies to it unchanged; the file name keeps the old id.
+- **Amended:** 2026-11-13 by `ADR-0008`: the tool's name (title only; the decision is unchanged).
 - **Deciders:** SB
 - **Scope:** Repo-level. What the probe's numbers mean: how probes are sent and matched, how time is
   taken, and how loss, latency and jitter are computed.

@@ -1,9 +1,8 @@
-# ADR-0003 — quarrel-probe is portable by construction: macOS first, Windows and Linux supported
+# ADR-0003 — quarrel-ping is portable by construction: macOS first, Windows and Linux supported
 
 - **Status:** **Accepted 2026-11-12.** Nothing of the probe is built yet.
 - **Date:** 2026-11-12
-- **Amended:** 2026-11-13 by `ADR-0008`: the tool is named `quarrel-ping` (was `quarrel-probe`).
-  This decision applies to it unchanged; the file name keeps the old id.
+- **Amended:** 2026-11-13 by `ADR-0008`: the tool's name (title only; the decision is unchanged).
 - **Deciders:** SB
 - **Scope:** Repo-level. Which platforms the probe supports, how platform differences are contained,
   and where the probe's ideas may come from.

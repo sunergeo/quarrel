@@ -14,8 +14,8 @@ Accepted · Superseded by ADR-NNNN · Deprecated. An amendment follows `governan
 |---|---|---|
 | [ADR-0001](./ADR-0001-quarrel-is-published-as-a-public-github-mirror-of-gitolite.md) | quarrel is published as a public GitHub mirror of gitolite, dual-licensed MIT OR Apache-2.0 | Accepted |
 | [ADR-0002](./ADR-0002-quarrel-is-one-toolkit-a-shared-core-with-a-shipper-and-a-probe.md) | quarrel is one toolkit: a shared core with a shipper and a probe (amended by ADR-0006, ADR-0008) | Accepted |
-| [ADR-0003](./ADR-0003-quarrel-probe-is-portable-by-construction.md) | quarrel-ping (was quarrel-probe) is portable by construction: macOS first, Windows and Linux supported | Accepted |
-| [ADR-0004](./ADR-0004-quarrel-probe-measures-paths-the-way-mtr-does.md) | quarrel-ping (was quarrel-probe) measures paths the way MTR does, with timing it can defend | Proposed |
+| [ADR-0003](./ADR-0003-quarrel-ping-is-portable-by-construction.md) | quarrel-ping is portable by construction: macOS first, Windows and Linux supported | Accepted |
+| [ADR-0004](./ADR-0004-quarrel-ping-measures-paths-the-way-mtr-does.md) | quarrel-ping measures paths the way MTR does, with timing it can defend | Proposed |
 | [ADR-0005](./ADR-0005-quarrel-emits-one-vendor-neutral-timestamped-event-stream.md) | quarrel emits one vendor-neutral, timestamped event stream | Accepted |
 | [ADR-0006](./ADR-0006-quarrel-is-production-grade-observability-tooling.md) | quarrel is production-grade observability tooling | Accepted |
 | [ADR-0007](./ADR-0007-quarrel-shipper-delivers-over-otlp-http-and-advances-only-on-acknowledgement.md) | quarrel-shipper delivers over OTLP/HTTP and advances only on acknowledgement | Proposed |
