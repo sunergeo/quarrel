@@ -19,6 +19,7 @@
 //! | quarrel-ping | `coordinated_omission` | The classic latency-measurement trap (BL-0011) | sampling bias; conditional probability; Monte Carlo simulation | planned |
 //! | quarrel-ping | `loss_confidence` | How many probes a loss rate needs (BL-0012) | Bernoulli and binomial distributions; confidence intervals (Wilson score); the Bayesian view (Beta posterior) | planned |
 //! | quarrel-ping | `path_simulation` | Traceroute without sockets (BL-0013) | graphs; hashing (how routers split flows across paths) | planned |
+//! | quarrel-ping | `change_points` | Finding where a step change begins (BL-0021) | cumulative sums and CUSUM; false alarms versus detection delay; likelihood ratios | planned |
 //! | quarrel-ping | `clock_sync` | One-way delay and why it is hard (BL-0014) | a small system of equations (offset and delay from four timestamps); error bounds | planned |
 //! | quarrel-ping | `latency_anatomy` | Where the milliseconds come from (BL-0015) | queueing: Little's law L = λW; M/M/1 waiting time as a Markov birth–death process | planned |
 //!

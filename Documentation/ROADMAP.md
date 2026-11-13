@@ -75,6 +75,7 @@ Lessons (optional, never on the shipping path; `crates/quarrel-lessons`), by the
   - `coordinated_omission`: the classic latency-measurement trap (`BL-0011`), before P2.
   - `loss_confidence`: how many probes a loss rate needs (`BL-0012`), before P2.
   - `path_simulation`: traceroute without sockets (`BL-0013`), before P3.
+  - `change_points`: finding where a step change begins, CUSUM (`BL-0021`), before P3.
   - `clock_sync`: one-way delay and why it is hard (`BL-0014`), any time.
   - `latency_anatomy`: where the milliseconds come from (`BL-0015`), any time.
 - **Foundations** (shipped): `checked_arithmetic` (the day-2 warm-up).

@@ -4,7 +4,7 @@ Untriaged signal. One file per item under `Backlog/`; this index is generated
 (`canon-index index`) and never hand-edited.
 
 <!-- BEGIN GENERATED INDEX — do not edit by hand; run `canon-index` -->
-_Next id: `BL-0021` (generated; capture new items with this id)._
+_Next id: `BL-0022` (generated; capture new items with this id)._
 ### Now
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|
@@ -32,6 +32,7 @@ _Next id: `BL-0021` (generated; capture new items with this id)._
 | BL-0015 | Optional lesson (quarrel-ping): latency anatomy — where the milliseconds come from | Process-idea | — | — | Triaged | [·](Backlog/BL-0015-lesson-where-the-milliseconds-come-from.md) |
 | BL-0017 | quarrel-ping has no standalone terminal UI for watching a path live (planned, future) | Process-idea | — | — | Triaged | [·](Backlog/BL-0017-quarrel-ping-standalone-tui-mode.md) |
 | BL-0018 | Possible enhancement: native Windows and macOS desktop clients for quarrel-ping | Process-idea | — | — | New | [·](Backlog/BL-0018-possible-native-windows-and-macos-clients-for-quarrel-ping.md) |
+| BL-0021 | Optional lesson (quarrel-ping): change-point detection — finding where a step change begins | Process-idea | — | — | Triaged | [·](Backlog/BL-0021-lesson-finding-where-a-step-change-begins.md) |
 ### Closed (collapsed)
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|

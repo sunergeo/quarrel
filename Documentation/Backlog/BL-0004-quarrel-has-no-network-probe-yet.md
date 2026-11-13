@@ -45,3 +45,4 @@ P1 to P6.
   clock_sync, latency_anatomy any time). See ROADMAP "Lessons".
 - 2026-11-13 — The tool is `quarrel-ping` (ADR-0008): PingPlotter-style observability into what
   network traffic does within a defined system (segments, routing, latency, bottlenecks).
+- 2026-11-13 — Lesson `change_points` (CUSUM, BL-0021) added before P3; segment attribution cites it.
