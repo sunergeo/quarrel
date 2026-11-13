@@ -37,7 +37,8 @@ reserved.
    default branch: `deletion` + `non_fast_forward`, empty bypass list. It is a seatbelt only;
    GitHub is not reported as gated (host-contract §5.2).
 6. **License:** `MIT OR Apache-2.0` (the Rust ecosystem convention), `LICENSE-MIT` +
-   `LICENSE-APACHE` + `Cargo.toml` `license`, copyright Sunergeo Systems.
+   `LICENSE-APACHE` + `Cargo.toml` `license`, copyright Sunergeo Systems, Inc. *(Corrected 2026-11-13:
+   the holder is the company's full legal name.)*
 
 ## Consequences
 
