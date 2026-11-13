@@ -1,3 +1,6 @@
 # Cargo build output. Cargo.lock IS committed: quarrel ships binaries, so the exact
 # dependency versions it was tested with are part of the build.
 /target
+
+# Editor and IDE settings stay local (IntelliJ/RustRover).
+/.idea/
