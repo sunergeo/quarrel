@@ -37,8 +37,8 @@ chose to build it now: a Cargo workspace at the repo root, with today's crate mo
 - **Decision and history text** that describes the past: ADR-0002's Context and Decision, BL-0001,
   this repo's onboarding record (GOV-CR-0024). They were true when written.
 - **Backlog file names.** Ids and slugs are immutable (`BL-0002-argus-…`); the titles are updated.
-- **Outside this repo:** the services repo's argus wiring (heartbeat ids like `argus@host1`, registry,
-  watchtower docs) is the separate "Argus references removal" work there.
+- **Outside this repo:** references to the old name in other repositories are those repositories'
+  own work.
 
 ## Log
 

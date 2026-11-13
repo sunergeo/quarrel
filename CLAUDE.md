@@ -15,7 +15,7 @@
 
 quarrel is one Cargo workspace (ADR-0002). Today it holds **`crates/quarrel-shipper`**, the per-host
 log shipper (formerly `argus`): it tails log files and ships the raw lines to an ingest endpoint,
-built as a static musl binary in a `scratch` image. `quarrel-core` and `quarrel-probe` are planned.
+built as a static musl binary in a `scratch` image. `quarrel-core` and `quarrel-ping` are planned.
 Run commands from the repo root; `cargo test` covers the workspace. The shipper is built step by step along a milestone roadmap (M0–M2 shipped, M3 discovery
 in progress; see `ROADMAP.md`). Its one invariant: **never save a file offset past what the destination
 has acknowledged** — a duplicate is harmless, a skipped line is the only real failure. Server-side
@@ -58,7 +58,7 @@ deployed yet; packaging and CI are M8). If a request appears to conflict with th
     `master`; never `--no-ff`; never force-push a protected ref.
 14. **Release model is `trunk-only`.** There are no release refs yet. Moving to `rolling-pair` when
     the shipper is first deployed is a §11 governed operation (ADR + refs + roster in one effort).
-    The services-release tags the extraction carried were deleted before the first push (BL-0001).
+    The release tags the extraction carried over were deleted before the first push (BL-0001).
 15. **Deletion is always confirmed; never route around a block.** In Cowork, `Operation not
     permitted`/EPERM on a delete (or a git step that must unlink) means call
     `allow_cowork_file_delete`, then proceed. Deleting history/outcomes is forbidden — archive instead.

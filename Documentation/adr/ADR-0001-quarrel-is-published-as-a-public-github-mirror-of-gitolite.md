@@ -11,7 +11,7 @@
 
 ## Context
 
-quarrel is governed on the Sunergeo gitolite instance (`git:quarrel`, ecx-gitsb1), where the gate
+quarrel is governed on the Sunergeo gitolite instance (`git:quarrel`), where the gate
 enforces the branch model: `master` advance-only, undeclared `release/*` refused, the canon VREF on
 every push (`verify-gate --server` 71/0, 2026-11-12). SB wants the code public on GitHub as well.
 

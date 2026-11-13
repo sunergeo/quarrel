@@ -37,3 +37,11 @@ P1 to P6.
 ## Log
 
 - 2026-11-12 — captured and triaged.
+- 2026-11-13 — Open question recorded (ADR-0006 §4): where the network tool runs in a given
+  deployment. Some operators want measurements from outside their app hosts, and some limit which
+  outbound connections a host agent may open. SB: decide later.
+- 2026-11-13 — Optional lessons that shape the probe captured as BL-0009 to BL-0015 (clocks before P1;
+  latency_stats, coordinated_omission, loss_confidence before P2; path_simulation before P3;
+  clock_sync, latency_anatomy any time). See ROADMAP "Lessons".
+- 2026-11-13 — The tool is `quarrel-ping` (ADR-0008): PingPlotter-style observability into what
+  network traffic does within a defined system (segments, routing, latency, bottlenecks).

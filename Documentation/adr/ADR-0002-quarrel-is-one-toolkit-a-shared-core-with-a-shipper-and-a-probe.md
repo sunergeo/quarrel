@@ -1,8 +1,10 @@
 # ADR-0002 — quarrel is one toolkit: a shared core with a shipper and a probe
 
 - **Status:** **Accepted 2026-11-12.** The workspace and the shipper rename are built (2026-11-12,
-  BL-0005); `quarrel-core` and `quarrel-probe` are not built yet (see Consequences).
+  BL-0005); `quarrel-core` and `quarrel-ping` (formerly `quarrel-probe`) are not built yet (see Consequences).
 - **Date:** 2026-11-12
+- **Amended:** 2026-11-13 by `ADR-0006` (purpose: production-grade tooling; Context, third
+  paragraph); 2026-11-13 by `ADR-0008` (the network tool is `quarrel-ping`; §1, §4, §5)
 - **Deciders:** SB
 - **Scope:** Repo-level. What quarrel is, how its code is divided, and what the parts are called.
 - **Related:** ADR-0001 (publication and license); ADR-0003 (probe portability); ADR-0004 (probe
@@ -19,9 +21,13 @@ buffer, outputs, crash-safe state) and answer the same operator question from tw
 software *said* (logs) and what the network *did* (measurements). Kept as two repos, that plumbing
 would be written twice and the two streams would drift apart.
 
-The project is also deliberately a public learning project: low-level networking, file I/O and
+~~The project is also deliberately a public learning project: low-level networking, file I/O and
 portable systems programming in Rust, built to production standards, with the reasoning written
-down. Many tools like it already exist; the learning and the demonstration of it are the point.
+down. Many tools like it already exist; the learning and the demonstration of it are the point.~~
+
+**⚠ Amended 2026-11-13 by `ADR-0006`.** quarrel is a production-grade suite of observability tools.
+Learning Rust and low-level protocols, and the public portfolio, are
+by-products, not the point. The toolkit decision below is unchanged.
 
 The name: a *quarrel* is a crossbow bolt. Send a small projectile toward a target and observe what
 happens.
@@ -33,7 +39,9 @@ happens.
      durable disk buffer, configuration and crash-safe state.
    - **`quarrel-shipper`** (binary) — tails log files and forwards them without losing a line. It is
      today's `argus` crate, renamed.
-   - **`quarrel-probe`** (binary) — sends its own probes and reports what the network did.
+   - ~~**`quarrel-probe`** (binary) — sends its own probes and reports what the network did.~~
+     **⚠ Amended 2026-11-13 by `ADR-0008`:** **`quarrel-ping`** (binary), PingPlotter-style network
+     observability for a defined system: segments, routing, latency and bottlenecks.
    - Supporting libraries are split out only when a boundary earns it. The first planned one is
      the probe's I/O-free packet code (ADR-0003 §3).
 2. **The shipper keeps its invariant:** never save a file offset past what the destination has
@@ -43,8 +51,13 @@ happens.
 4. **Names:** the project and the workspace are `quarrel`, and the crates carry the
    `quarrel-` prefix. The names `quarrel`, `quarrel-shipper` and `quarrel-probe` were unclaimed on
    crates.io on 2026-11-12. Publishing to crates.io is a separate decision, not taken here.
-5. **The UI is not a goal.** Both binaries are command-line tools. A terminal UI for the probe may
-   come later; a desktop or web front end is out of scope.
+   **⚠ Amended 2026-11-13 by `ADR-0008`:** the network tool is `quarrel-ping`; its crates.io
+   availability is to be confirmed.
+5. ~~**The UI is not a goal.** Both binaries are command-line tools. A terminal UI for the probe may
+   come later; a desktop or web front end is out of scope.~~
+   **⚠ Amended 2026-11-13 by `ADR-0008` §4:** for observability, quarrel only emits OTLP and
+   consumers build their own dashboards. quarrel-ping will gain a standalone TUI mode (planned), and
+   native Windows/macOS clients are a possible enhancement. A web front end remains out of scope.
 
 ## Consequences
 

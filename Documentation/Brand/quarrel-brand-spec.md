@@ -12,14 +12,14 @@ Version 1.0 · November 12, 2026 · Website and documentation
 - **Tagline** — Read the host. Measure the path.
 - **Short description** — Open-source observability tools for the command line, built in Rust.
 - **Name** — Use **Quarrel** in prose and page titles. Use lowercase for the repository, workspace, executable and crate identifiers. Typeset those identifiers as code.
-- **Product names** — `quarrel-shipper`, `quarrel-probe`, and `quarrel-core`. The toolkit has one visual identity. Use the full crate name to identify a tool in navigation, headings, and examples.
+- **Product names** — `quarrel-shipper`, `quarrel-ping` (renamed from `quarrel-probe` 2026-11-13, ADR-0008), and `quarrel-core`. The toolkit has one visual identity. Use the full crate name to identify a tool in navigation, headings, and examples.
 
 ### Feature claims
 
 | Name | How to describe it today |
 | --- | --- |
 | `quarrel-shipper` | In development. Scans and tails complete log lines, reports byte offsets, and can persist offsets across runs. File fingerprinting has begun. |
-| `quarrel-probe` | Planned active measurement of latency, jitter, packet loss, and network paths. The MTR-style measurement model is proposed. |
+| `quarrel-ping` | Planned PingPlotter-style network observability for a defined system: segments, routing, per-hop latency and loss over time, and where bottlenecks are. The MTR-style measurement model is proposed. |
 | `quarrel-core` | Planned shared event model, state, buffering, and outputs. |
 | Open formats | NDJSON, OTLP, and optional Prometheus exposition are design direction. Label them as planned wherever they appear. |
 
