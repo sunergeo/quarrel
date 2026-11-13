@@ -18,6 +18,10 @@ disposition: null
 
 **quarrel-ping**, before **P1**. Module `clocks` in `crates/quarrel-lessons`, tests in `tests/clocks.rs`.
 
+## Math it exercises
+
+empirical distributions; resolution and measurement error.
+
 ## Why
 
 ADR-0004 §3–§4 make the probe time every sample with a monotonic clock and state its precision per

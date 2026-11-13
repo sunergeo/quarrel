@@ -18,6 +18,10 @@ disposition: null
 
 **quarrel-ping**, before **P3**. Module `path_simulation` in `crates/quarrel-lessons`, tests in `tests/path_simulation.rs`.
 
+## Math it exercises
+
+graphs; hashing (how routers split flows across paths).
+
 ## Why
 
 P3 measures paths MTR-style (ADR-0004 §1, §7). An in-memory network makes the mechanics visible and

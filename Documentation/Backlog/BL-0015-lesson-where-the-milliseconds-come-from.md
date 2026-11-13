@@ -18,6 +18,10 @@ disposition: null
 
 **quarrel-ping**, at any point (not tied to a P-step). Module `latency_anatomy` in `crates/quarrel-lessons`, tests in `tests/latency_anatomy.rs`.
 
+## Math it exercises
+
+queueing: Little's law L = λW; M/M/1 waiting time as a Markov birth–death process.
+
 ## Why
 
 Optional background for reading the probe's numbers.

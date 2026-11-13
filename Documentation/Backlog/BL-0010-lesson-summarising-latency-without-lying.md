@@ -18,6 +18,10 @@ disposition: null
 
 **quarrel-ping**, before **P2**. Module `latency_stats` in `crates/quarrel-lessons`, tests in `tests/latency_stats.rs`.
 
+## Math it exercises
+
+Σ, E[X], Var(X); Welford's recurrence; quantiles; log-scale buckets; exponential smoothing (RFC 3550 jitter).
+
 ## Why
 
 ADR-0004 §5 defines loss, percentiles, jitter and roll-ups. The probe uses the `hdrhistogram` crate;

@@ -18,6 +18,10 @@ disposition: null
 
 **quarrel-ping**, before **P2**. Module `loss_confidence` in `crates/quarrel-lessons`, tests in `tests/loss_confidence.rs`.
 
+## Math it exercises
+
+Bernoulli and binomial distributions; confidence intervals (Wilson score); the Bayesian view (Beta posterior).
+
 ## Why
 
 ADR-0004 §5–§6 define loss and require rate limiting to be surfaced. Zero lost out of 100 does not

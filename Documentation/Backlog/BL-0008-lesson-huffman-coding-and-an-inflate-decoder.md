@@ -19,6 +19,10 @@ disposition: null
 **quarrel-shipper**: gzip on every OTLP batch (ADR-0007 §1) and reading gzip-rotated files (M3).
 Module `compression` in `crates/quarrel-lessons`.
 
+## Math it exercises
+
+prefix codes and trees; a greedy algorithm and its optimality proof; entropy H = −Σ p·log₂ p; the Kraft inequality Σ 2^(−ℓᵢ) ≤ 1.
+
 ## Why
 
 SB, 2026-11-13: Huffman coding is something he has long wanted to learn. The shipper gzips its OTLP

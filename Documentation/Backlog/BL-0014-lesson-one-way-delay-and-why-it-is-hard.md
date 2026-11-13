@@ -18,6 +18,10 @@ disposition: null
 
 **quarrel-ping**, at any point (not tied to a P-step). Module `clock_sync` in `crates/quarrel-lessons`, tests in `tests/clock_sync.rs`.
 
+## Math it exercises
+
+a small system of equations (offset and delay from four timestamps); error bounds.
+
 ## Why
 
 The probe reports round-trip time. This lesson shows why one-way delay is a different, harder

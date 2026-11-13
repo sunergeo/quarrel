@@ -18,6 +18,10 @@ disposition: null
 
 **quarrel-ping**, before **P2**. Module `coordinated_omission` in `crates/quarrel-lessons`, tests in `tests/coordinated_omission.rs`.
 
+## Math it exercises
+
+sampling bias; conditional probability; Monte Carlo simulation.
+
 ## Why
 
 A tester that waits for each reply before sending the next probe sends fewer probes exactly when the
