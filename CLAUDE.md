@@ -62,6 +62,9 @@ deployed yet; packaging and CI are M8). If a request appears to conflict with th
     `master`; never `--no-ff`; never force-push a protected ref.
     Every rollup also checks the README against the change and runs `scripts/check-readme.sh`;
     drift stops the promotion (ADR-0010).
+    Every rollup also requires the commit's CI pipeline to have passed on Linux and Windows, and on
+    macOS unless that leg was unavailable (then say so in the rollup; never a silent skip). Until CI
+    is running (BL-0025), run `cargo test` locally on the Mac before promoting (ADR-0012).
 14. **Release model is `trunk-only`.** There are no release refs yet. Moving to `rolling-pair` when
     the shipper is first deployed is a §11 governed operation (ADR + refs + roster in one effort).
     The release tags the extraction carried over were deleted before the first push (BL-0001).

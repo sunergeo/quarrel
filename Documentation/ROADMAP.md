@@ -15,6 +15,9 @@ onboarding: M0 scaffold, M1 `scan`/`tail`, M2 persisted offsets.
   and an hour-long outage on macOS, Linux and Windows. SB's first priority (2026-11-13). Its open
   questions (test collector, CI, resource budget, I/O model) come first.
 
+- **CI on three OSes** (`BL-0025`, ADR-0012): Jenkins on the CentOS VM; Windows VM and laptop
+  agents. Needed for the shipping SOW's Sc9.
+
 - **Demo consumer, receiver and test mode first** (`BL-0019`, ADR-0009): the shipping SOW's test
   collector (D6). The React dashboard follows: shipper views now, quarrel-ping views after P2/P3.
 

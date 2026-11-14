@@ -23,3 +23,4 @@ Accepted · Superseded by ADR-NNNN · Deprecated. An amendment follows `governan
 | [ADR-0009](./ADR-0009-quarrel-ships-a-demo-consumer-for-demonstration-development-and-testing.md) | quarrel ships a demo consumer for demonstration, development and testing | Accepted |
 | [ADR-0010](./ADR-0010-the-readme-is-the-public-front-page-and-every-change-keeps-it-current.md) | The README is the public front page, and every change keeps it current | Accepted |
 | [ADR-0011](./ADR-0011-quarrel-core-does-no-io-and-each-tool-chooses-its-own-io-model.md) | quarrel-core does no I/O, and each tool chooses its own I/O model | Accepted |
+| [ADR-0012](./ADR-0012-ci-runs-on-three-operating-systems-before-promotion-coordinated-by-jenkins.md) | CI runs on Linux, Windows and macOS before promotion, coordinated by Jenkins | Accepted |

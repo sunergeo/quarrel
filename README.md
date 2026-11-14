@@ -86,9 +86,11 @@ docker build -t quarrel-shipper:dev .
 | `Documentation/` | The plans, versioned with the code: `BIG-IDEAS.md` and `BigIdeas/` (strategy), `STATUS.md`, `ROADMAP.md`, `Outcomes/` (one statement of work per outcome), `BACKLOG.md` and `Backlog/`, `adr/` (decisions). |
 | `Documentation/Brand/` | The brand: [spec](Documentation/Brand/quarrel-brand-spec.md) (logo, colors, type, voice) and the approved board. |
 
-## Not wired yet (roadmap M8)
+## Not wired yet
 
-Deployment packaging and CI. Until then the shipper is built and run by hand.
+- **CI** is decided but not yet running: Linux, Windows and macOS legs coordinated by Jenkins, all
+  before a change is promoted ([ADR-0012](Documentation/adr/ADR-0012-ci-runs-on-three-operating-systems-before-promotion-coordinated-by-jenkins.md)).
+- **Deployment packaging** (roadmap M8). Until then the shipper is built and run by hand.
 
 ## Contributing
 

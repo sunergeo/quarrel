@@ -99,8 +99,7 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
 - [ ] **Sc8 — Transport.** Export to an HTTPS collector with a self-signed certificate. Expected:
   refused unless that CA is configured; accepted when it is; the bearer token never appears in the
   shipper's output or logs.
-- [ ] **Sc9 — Three platforms.** Sc1–Sc4 and Sc6 pass on macOS, Linux and Windows. Test path: CI
-  matrix (OQ2).
+- [ ] **Sc9 — Three platforms.** Sc1–Sc4 and Sc6 pass on macOS, Linux and Windows. Test path: the CI pipeline (D8, ADR-0012).
 - [ ] **Sc10 — Resource budget.** Shipping 1,000 lines/s for 10 minutes, and buffering through Sc5,
   stays within the memory budget set in OQ3. Test path: soak with peak RSS recorded.
 - [ ] **README reflects this outcome** (ADR-0010): the shipper row says it ships over OTLP at least
@@ -124,15 +123,16 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
 | D5 | macOS, Linux and Windows are all supported for the shipper | SB 2026-11-13; ADR-0006 §3 |
 | D6 | The test collector is `quarrel-demo`'s test mode; one run also goes against a stock OpenTelemetry Collector | SB 2026-11-13; ADR-0009 §2–§3 |
 | D7 | Synchronous shipper: a reader/batcher thread and a sender thread joined by a channel; blocking HTTP client; quarrel-core does no I/O | SB 2026-11-14; ADR-0011 |
+| D8 | CI before promotion: Jenkins on a CentOS VM (coordinator + Linux leg), a Windows VM and SB's laptop (macOS) over SSH; rollup requires all three, macOS waivable only when unavailable | SB 2026-11-14; ADR-0012; BL-0025 |
 
 ## 6. Open Questions
 
 - ~~**OQ1 — Test collector.** Write a small in-repo test receiver (records batches, returns scripted
   responses), or drive a stock `otelcol` with a file exporter? The in-repo one is needed for Sc6
   either way; the stock one proves interoperability.~~ **Resolved 2026-11-13 → D6** (ADR-0009 §2).
-- **OQ2 — CI before M8.** Sc9 needs a three-OS CI matrix now, not at M8. Where does it run, given
+- ~~**OQ2 — CI before M8.** Sc9 needs a three-OS CI matrix now, not at M8. Where does it run, given
   gitolite is the system of record (ADR-0001)? GitHub Actions on the mirror is the obvious host;
-  results would be advisory, not a gate.
+  results would be advisory, not a gate.~~ **Resolved 2026-11-14 → D8** (ADR-0012).
 - **OQ3 — Resource budget.** What memory (and CPU) ceiling should the shipper hold on a production
   host? The hardened service unit will set `MemoryMax=`; it needs a number.
 - **OQ4 — Batch defaults.** Line, byte and interval defaults (a common receiver limit is 5,000 lines, 5 MB,
@@ -170,6 +170,7 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-14 — OQ2 resolved → D8 (three-OS CI before promotion, Jenkins; ADR-0012).
 - 2026-11-14 — OQ6 resolved → D7 (sync shipper, I/O-free core; ADR-0011).
 - 2026-11-13 — OQ1 resolved → D6 (the demo consumer's test mode, ADR-0009).
 - 2026-11-13 — Created from SB's rulings (purpose, OTLP, first SOW = first real shipping, all three

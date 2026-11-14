@@ -4,12 +4,13 @@ Untriaged signal. One file per item under `Backlog/`; this index is generated
 (`canon-index index`) and never hand-edited.
 
 <!-- BEGIN GENERATED INDEX — do not edit by hand; run `canon-index` -->
-_Next id: `BL-0025` (generated; capture new items with this id)._
+_Next id: `BL-0026` (generated; capture new items with this id)._
 ### Now
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|
 | BL-0002 | The shipper exits when its file is missing and keys offsets by path, so rotation loses its place | Bug | Major | BI-02 | New | [·](Backlog/BL-0002-argus-exits-on-a-missing-file-and-keys-offsets-by-path.md) |
 | BL-0019 | quarrel has no demo consumer, so there is nothing to send telemetry to or look at, and no controllable test collector | Process-idea | — | BI-02 | Triaged | [·](Backlog/BL-0019-quarrel-has-no-demo-consumer-to-receive-and-show-its-telemetry.md) |
+| BL-0025 | Stand up CI per ADR-0012 — Jenkins on the CentOS VM, Windows VM and laptop agents, triggered by gitolite | Process-idea | — | BI-02 | Triaged | [·](Backlog/BL-0025-stand-up-ci-jenkins-with-linux-windows-and-macos-legs.md) |
 ### Next
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|
