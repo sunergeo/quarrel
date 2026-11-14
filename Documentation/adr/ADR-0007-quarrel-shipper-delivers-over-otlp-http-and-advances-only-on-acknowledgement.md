@@ -66,6 +66,8 @@ to carry the identity it dedupes on.
 6. **Batching:** a batch closes at a configured line count or byte size, or after a configured
    interval while lines are pending (defaults to be set from measurements; a receiver's limits, for
    example 5,000 lines / 5 MB / 5 s, are configuration, not constants).
+   The defaults are named profiles with per-setting overrides (`balanced`, `throughput`, `live`;
+   shipping SOW D10).
 7. **Transport:** HTTPS with certificate verification on by default; a bearer token or custom
    headers from configuration; secrets are never logged. Plain `http://` only when configured
    explicitly. FIPS mode is BL-0006.
