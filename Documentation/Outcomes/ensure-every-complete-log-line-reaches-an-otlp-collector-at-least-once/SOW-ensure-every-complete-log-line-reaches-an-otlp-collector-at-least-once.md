@@ -155,6 +155,10 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   lines. Receivers then order by `observed_time` and, within a file, by offset; confirm that is
   enough, or whether an optional timestamp-parsing hook is needed later.~~ **Resolved 2026-11-14 → D11.**
 
+- **OQ8 — Windows file sharing** (from OQ5). Raised in `Architecture/shipping-architecture.md` §10.
+- **OQ9 — Quarantine bounds.** Raised in `Architecture/shipping-architecture.md` §10.
+- **OQ10 — Poll interval.** Raised in `Architecture/shipping-architecture.md` §10.
+
 ## 7. Release notes draft
 
 - You can now ship log files to any OpenTelemetry (OTLP/HTTP) collector. Every line carries its
