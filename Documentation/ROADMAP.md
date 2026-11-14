@@ -11,9 +11,9 @@ onboarding: M0 scaffold, M1 `scan`/`tail`, M2 persisted offsets.
 ## Now
 
 - **[Ship to an OTLP collector, at least once](./Outcomes/ensure-every-complete-log-line-reaches-an-otlp-collector-at-least-once/SOW-ensure-every-complete-log-line-reaches-an-otlp-collector-at-least-once.md)**
-  (SOW, Planned): ack-before-advance over OTLP/HTTP (ADR-0007), proven through `kill -9`, restarts
+  (SOW, In Architecture): ack-before-advance over OTLP/HTTP (ADR-0007), proven through `kill -9`, restarts
   and an hour-long outage on macOS, Linux and Windows. SB's first priority (2026-11-13). Its open
-  questions (test collector, CI, resource budget, I/O model) come first.
+  questions are settled (D6–D11); architecture next.
 
 - **CI on three OSes** (`BL-0025`, ADR-0012): Jenkins on the CentOS VM; Windows VM and laptop
   agents. Needed for the shipping SOW's Sc9.

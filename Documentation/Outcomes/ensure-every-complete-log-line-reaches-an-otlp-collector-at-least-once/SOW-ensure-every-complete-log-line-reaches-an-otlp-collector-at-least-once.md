@@ -1,6 +1,6 @@
 # SOW: Ensure every complete log line reaches an OTLP collector at least once, through crashes, restarts and outages
 
-**Status:** Planned
+**Status:** In Architecture
 **Created:** 2026-11-13
 **Last updated:** 2026-11-14
 **Owner:** SB
@@ -131,6 +131,7 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
 | D8 | CI before promotion: Jenkins on a CentOS VM (coordinator + Linux leg), a Windows VM and SB's laptop (macOS) over SSH; rollup requires all three, macOS waivable only when unavailable | SB 2026-11-14; ADR-0012; BL-0025 |
 | D9 | Resource budget (starting target): ≤ 64 MiB resident memory and < 5% of one core at 1,000 lines/s; disk-buffer cap configurable, default 1 GiB. Memory is enforced (the service unit's `MemoryMax=`), CPU is reported. The first soak's measured peak is written here, and the target tightened if it is far below | SB 2026-11-14 |
 | D10 | Batching is chosen by named profile, with per-setting overrides: `balanced` (default: 1,000 lines / 1 MiB raw / 1 s), `throughput` (5,000 / 5 MiB / 5 s), `live` (500 / 512 KiB / 250 ms). Explicit field > profile > default; same keys in env and file; per destination; effective values and their source logged at startup and reported in health; impossible values refused, risky ones warned; the wait timer starts at a batch's first line. No adaptive batching for now | SB 2026-11-14 |
+| D11 | Event time: the shipper sends only the time it read a line (`observed_time`); receivers order by it and, within a file, by offset. A timestamp parser, if ever needed, is a separate opt-in item | SB 2026-11-14 |
 
 ## 6. Open Questions
 
@@ -146,12 +147,13 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   5 s).~~ **Resolved 2026-11-14 → D10.**
 - **OQ5 — Windows file semantics.** Reading a file another process is writing, and later rotating,
   needs the right sharing flags (`FILE_SHARE_DELETE`); confirm before Sc9.
+  **Transferred 2026-11-14 → Architecture OQ8** (an experiment on the Windows VM).
 - ~~**OQ6 — I/O model and HTTP stack.** Synchronous poll loop with a blocking client (for example
   `ureq` + rustls), or async (Tokio + `reqwest`)? The probe's question,
   BL-0003, is the same one; decide them together.~~ **Resolved 2026-11-14 → D7** (ADR-0011).
-- **OQ7 — Event time.** ADR-0007 leaves `time_unix_nano` unset because the shipper does not parse
+- ~~**OQ7 — Event time.** ADR-0007 leaves `time_unix_nano` unset because the shipper does not parse
   lines. Receivers then order by `observed_time` and, within a file, by offset; confirm that is
-  enough, or whether an optional timestamp-parsing hook is needed later.
+  enough, or whether an optional timestamp-parsing hook is needed later.~~ **Resolved 2026-11-14 → D11.**
 
 ## 7. Release notes draft
 
@@ -177,6 +179,7 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-14 — OQ7 resolved → D11; OQ5 transferred to Architecture OQ8.
 - 2026-11-14 — OQ4 resolved → D10 (batch profiles balanced/throughput/live, overrides); Sc10a added.
 - 2026-11-14 — OQ3 resolved → D9 (64 MiB, < 5% core, 1 GiB buffer default).
 - 2026-11-14 — OQ2 resolved → D8 (three-OS CI before promotion, Jenkins; ADR-0012).
@@ -188,3 +191,6 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 ## Phase Transitions
 
 - 2026-11-13 — Status: Planned. SOW created.
+- 2026-11-14 — Status: Planned → In Architecture. Every question needing SB's ruling is settled
+  (D7–D11); OQ5 continues as Architecture OQ8. Architecture note:
+  `Architecture/shipping-architecture.md`.

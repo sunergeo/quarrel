@@ -5,7 +5,7 @@ The at-a-glance view of this repo's outcomes (canon `governance-core` §0). Each
 
 | Outcome | Status | Updated |
 |---|---|---|
-| [Ensure every complete log line reaches an OTLP collector at least once](./Outcomes/ensure-every-complete-log-line-reaches-an-otlp-collector-at-least-once/SOW-ensure-every-complete-log-line-reaches-an-otlp-collector-at-least-once.md) | Planned | 2026-11-13 |
+| [Ensure every complete log line reaches an OTLP collector at least once](./Outcomes/ensure-every-complete-log-line-reaches-an-otlp-collector-at-least-once/SOW-ensure-every-complete-log-line-reaches-an-otlp-collector-at-least-once.md) | In Architecture | 2026-11-14 |
 
 Purpose (ADR-0006, 2026-11-13): production-grade observability tooling, vendor-neutral; learning and
 the portfolio are by-products. The shipper delivers over OTLP/HTTP (ADR-0007, Proposed); consumers
