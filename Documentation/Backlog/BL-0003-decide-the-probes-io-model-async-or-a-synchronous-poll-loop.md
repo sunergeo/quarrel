@@ -7,7 +7,7 @@ horizon: next
 big_idea: BI-01
 reporter: SB (via Cowork agent)
 opened: 2026-11-12
-updated: 2026-11-12
+updated: 2026-11-14
 affected: ADR-0003 §4; quarrel-ping (not yet built)
 disposition: null
 ---
@@ -42,3 +42,5 @@ starts.
 ## Log
 
 - 2026-11-12 — captured.
+- 2026-11-14 — The shipper went synchronous and quarrel-core is I/O-free (ADR-0011), so this item is
+  now quarrel-ping's choice alone, to be made at P1 around that core.

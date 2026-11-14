@@ -2,7 +2,7 @@
 
 **Status:** Planned
 **Created:** 2026-11-13
-**Last updated:** 2026-11-13
+**Last updated:** 2026-11-14
 **Owner:** SB
 **Big idea:** BI-02 (never lose a line)
 
@@ -123,6 +123,7 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
 | D4 | Plain TLS now; FIPS later | SB 2026-11-13; BL-0006 |
 | D5 | macOS, Linux and Windows are all supported for the shipper | SB 2026-11-13; ADR-0006 §3 |
 | D6 | The test collector is `quarrel-demo`'s test mode; one run also goes against a stock OpenTelemetry Collector | SB 2026-11-13; ADR-0009 §2–§3 |
+| D7 | Synchronous shipper: a reader/batcher thread and a sender thread joined by a channel; blocking HTTP client; quarrel-core does no I/O | SB 2026-11-14; ADR-0011 |
 
 ## 6. Open Questions
 
@@ -138,9 +139,9 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   5 s).
 - **OQ5 — Windows file semantics.** Reading a file another process is writing, and later rotating,
   needs the right sharing flags (`FILE_SHARE_DELETE`); confirm before Sc9.
-- **OQ6 — I/O model and HTTP stack.** Synchronous poll loop with a blocking client (for example
+- ~~**OQ6 — I/O model and HTTP stack.** Synchronous poll loop with a blocking client (for example
   `ureq` + rustls), or async (Tokio + `reqwest`)? The probe's question,
-  BL-0003, is the same one; decide them together.
+  BL-0003, is the same one; decide them together.~~ **Resolved 2026-11-14 → D7** (ADR-0011).
 - **OQ7 — Event time.** ADR-0007 leaves `time_unix_nano` unset because the shipper does not parse
   lines. Receivers then order by `observed_time` and, within a file, by offset; confirm that is
   enough, or whether an optional timestamp-parsing hook is needed later.
@@ -169,6 +170,7 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-14 — OQ6 resolved → D7 (sync shipper, I/O-free core; ADR-0011).
 - 2026-11-13 — OQ1 resolved → D6 (the demo consumer's test mode, ADR-0009).
 - 2026-11-13 — Created from SB's rulings (purpose, OTLP, first SOW = first real shipping, all three
   platforms).
