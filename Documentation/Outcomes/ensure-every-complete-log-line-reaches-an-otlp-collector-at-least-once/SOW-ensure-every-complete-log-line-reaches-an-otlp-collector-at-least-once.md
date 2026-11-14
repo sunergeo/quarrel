@@ -101,7 +101,7 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   shipper's output or logs.
 - [ ] **Sc9 — Three platforms.** Sc1–Sc4 and Sc6 pass on macOS, Linux and Windows. Test path: the CI pipeline (D8, ADR-0012).
 - [ ] **Sc10 — Resource budget.** Shipping 1,000 lines/s for 10 minutes, and buffering through Sc5,
-  stays within the memory budget set in OQ3. Test path: soak with peak RSS recorded.
+  stays within the D9 budget (≤ 64 MiB resident, < 5% of one core at 1,000 lines/s). Test path: soak with peak RSS recorded.
 - [ ] **README reflects this outcome** (ADR-0010): the shipper row says it ships over OTLP at least
   once (and no more than is proven); commands and configuration are documented;
   `scripts/check-readme.sh` passes.
@@ -124,6 +124,7 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
 | D6 | The test collector is `quarrel-demo`'s test mode; one run also goes against a stock OpenTelemetry Collector | SB 2026-11-13; ADR-0009 §2–§3 |
 | D7 | Synchronous shipper: a reader/batcher thread and a sender thread joined by a channel; blocking HTTP client; quarrel-core does no I/O | SB 2026-11-14; ADR-0011 |
 | D8 | CI before promotion: Jenkins on a CentOS VM (coordinator + Linux leg), a Windows VM and SB's laptop (macOS) over SSH; rollup requires all three, macOS waivable only when unavailable | SB 2026-11-14; ADR-0012; BL-0025 |
+| D9 | Resource budget (starting target): ≤ 64 MiB resident memory and < 5% of one core at 1,000 lines/s; disk-buffer cap configurable, default 1 GiB. Memory is enforced (the service unit's `MemoryMax=`), CPU is reported. The first soak's measured peak is written here, and the target tightened if it is far below | SB 2026-11-14 |
 
 ## 6. Open Questions
 
@@ -133,8 +134,8 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
 - ~~**OQ2 — CI before M8.** Sc9 needs a three-OS CI matrix now, not at M8. Where does it run, given
   gitolite is the system of record (ADR-0001)? GitHub Actions on the mirror is the obvious host;
   results would be advisory, not a gate.~~ **Resolved 2026-11-14 → D8** (ADR-0012).
-- **OQ3 — Resource budget.** What memory (and CPU) ceiling should the shipper hold on a production
-  host? The hardened service unit will set `MemoryMax=`; it needs a number.
+- ~~**OQ3 — Resource budget.** What memory (and CPU) ceiling should the shipper hold on a production
+  host? The hardened service unit will set `MemoryMax=`; it needs a number.~~ **Resolved 2026-11-14 → D9.**
 - **OQ4 — Batch defaults.** Line, byte and interval defaults (a common receiver limit is 5,000 lines, 5 MB,
   5 s).
 - **OQ5 — Windows file semantics.** Reading a file another process is writing, and later rotating,
@@ -170,6 +171,7 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-14 — OQ3 resolved → D9 (64 MiB, < 5% core, 1 GiB buffer default).
 - 2026-11-14 — OQ2 resolved → D8 (three-OS CI before promotion, Jenkins; ADR-0012).
 - 2026-11-14 — OQ6 resolved → D7 (sync shipper, I/O-free core; ADR-0011).
 - 2026-11-13 — OQ1 resolved → D6 (the demo consumer's test mode, ADR-0009).
