@@ -105,6 +105,11 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   bytes, or wait from its first line); an override replaces only its own field; the effective values
   and their source appear at startup; Sc1 and Sc2 also pass under `live`. Test path: integration
   tests against the test collector.
+- [ ] **Sc10b — Many files.** Configure 400 files, each receiving lines. Expected: memory stays
+  within D9 and does not grow with the file count; open file handles stay under the cap; with
+  `max_files = 256` exactly 256 are tracked and the shipper reports the limit in its logs and health
+  (and refuses to start under `strict`); no file is starved (every tracked file's lines arrive within
+  a few batch intervals). Test path: integration test against the test collector, on all three OSes.
 - [ ] **Sc10 — Resource budget.** Shipping 1,000 lines/s for 10 minutes, and buffering through Sc5,
   stays within the D9 budget (≤ 64 MiB resident, < 5% of one core at 1,000 lines/s). Test path: soak with peak RSS recorded.
 - [ ] **README reflects this outcome** (ADR-0010): the shipper row says it ships over OTLP at least
@@ -183,6 +188,8 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-14 — Sc10b (many files) added with architecture D16/D17 (SB: guard against rogue file
+  counts).
 - 2026-11-14 — OQ7 resolved → D11; OQ5 transferred to Architecture OQ8.
 - 2026-11-14 — OQ4 resolved → D10 (batch profiles balanced/throughput/live, overrides); Sc10a added.
 - 2026-11-14 — OQ3 resolved → D9 (64 MiB, < 5% core, 1 GiB buffer default).

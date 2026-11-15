@@ -55,6 +55,16 @@ invariant becomes testable without a network, a clock or a file system.
   **outcome** back. It never touches state.
 - **D13 — the reader thread is the only writer of offsets.** It owns the ledger and the state store,
   and applies outcomes in order. With one batch in flight there is exactly one possible order.
+- **D16 — memory is independent of the number of files.** Batches are global, not per file: the
+  reader fills one batch from all files, in bounded chunks, round-robin, each file limited to a share
+  of the batch so one busy file cannot starve the rest. Per-file bookkeeping (path, offsets,
+  fingerprint) is a few hundred bytes. Files are not held open between reads (open, read, close);
+  only a small, capped set of recently active handles may stay open.
+- **D17 — a cap on tracked files, reported loudly.** `max_files` per input and overall (default 256,
+  configurable). If a configuration names more, the shipper tracks the first N (for explicit lists,
+  in the order given; for globs in M3, the newest by modification time), logs and reports in health
+  "input X matched N files, limit L", and marks itself unhealthy with that reason. `strict = true`
+  refuses to start instead. Never a silent drop.
 
 ## 4. The offset-save path, and what a crash does
 
@@ -148,6 +158,11 @@ ADR-0012). Versions are pinned in `Cargo.lock`.
 - **R2 — unbounded reads.** `complete_lines_from` reads to end of file into memory. A large backlog
   (an hour-long outage, Sc5) would blow D9. The reader must read in bounded chunks up to the open
   batch's remaining room.
+- **R4 — many files.** A configuration that names hundreds of files would exhaust file handles
+  (macOS allows 256 per process by default), cost thousands of status checks a second, and let one
+  busy file starve others. Answered by D16 and D17; the remaining discovery risks (backfill floods,
+  matching compressed or binary files, the shipper's own state folder, state growth) belong to M3
+  (BL-0002).
 - **R3 — a single line larger than the batch byte cap.** Lines are capped (ADR-0007 §2,
   `quarrel.line.truncated_bytes`) below the smallest profile's byte cap, so a batch always has room
   for at least one line.
@@ -174,6 +189,7 @@ ADR-0012). Versions are pinned in `Cargo.lock`.
 | Sc8 | a test collector with a self-signed CA; log output scanned for the token |
 | Sc9 | the three-OS pipeline (ADR-0012) |
 | Sc10 | soak with peak memory and CPU recorded against D9 |
+| Sc10b | 400 files at once against the D9 budget, the handle count and the D17 cap |
 | core logic | unit tests in `quarrel-core`: batching limits, ledger never passing an ack, response classes, mapping |
 
 ## 12. Order of work (for the engineering plan)
