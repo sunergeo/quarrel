@@ -35,7 +35,8 @@ When globs and discovery arrive, they must also:
    user exclude patterns.
 4. **Cheap polling:** check only size and modification time each tick and read changed files; re-run
    globs far less often (e.g. every 10 s); limit recursion depth for `**`.
-5. **State clean-up:** forget offsets for files gone longer than a configurable time.
+5. **State clean-up:** already built in the shipping SOW (architecture D21: expiry and cap); M3 moves
+   the state key from path to fingerprint.
 6. **Fairness:** keep D16's round-robin, per-file share of each batch.
 
 ## Log

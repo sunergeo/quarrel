@@ -76,6 +76,30 @@ invariant becomes testable without a network, a clock or a file system.
     validated and the lock is held.
   - Log sink: `stderr` (default; text on a terminal, `json` on request) or `file`; the log folder is
     auto-excluded from shipping. The Windows Event Log sink arrives with the service mode (BL-0026).
+- **D21 — the state file: format, expiry, cap.** `state.json` in the state folder, written only by
+  the reader thread, only after an acknowledgement, atomically (§4).
+  - **Versioned entries**, one per tracked file: path (the key until M3 keys by fingerprint), frozen
+    fingerprint and its length (D15), committed offset, size last seen (for truncation, M4), last
+    seen time; plus a `schema` version for the whole file.
+  - **Expiry, not instant removal:** an entry whose file is missing or no longer configured is kept
+    for a grace period (`state.forget_after`, default 7 days), then dropped, so briefly removing a
+    file from the config or a log recreated after rotation keeps its place.
+  - **Hard cap:** at most 4 × `max_files` entries (1,024 by default); beyond that the
+    least-recently-seen entries are dropped, each named in a log line.
+  - Worst case the file stays around 100–200 KB, cheap to rewrite on each save.
+- **D22 — missing or corrupt state is handled explicitly and reported.**
+  - **Start-position policy** for a file with no saved offset: `start_position = "end"` (default;
+    ship only new lines, no flood), `"beginning"` (ship everything; the collector drops duplicates)
+    or `"refuse"` (do not start without state).
+  - **Always reported:** starting with no state for a non-empty file logs the files and the policy,
+    and emits a `quarrel.gap` record of kind `no_history` per file (ADR-0007 §5), so a consumer can
+    see that lines before this point may be missing or duplicated. True on a first install as well.
+  - **Corrupt is not missing:** a state file that exists but cannot be read stops the shipper (exit
+    code 2), keeps the file and names it. `run --reset-state` moves it aside as
+    `state.json.bad-<UTC time>` and continues under the start-position policy, with `no_history`
+    gaps. Deleting the state file on purpose is the operator's reset; the gaps make it visible.
+  - The previous good state is kept as `state.json.prev` and offered as a fallback when the latest
+    is corrupt (the operator chooses it with `--use-previous-state`; never automatic).
 - **D16 — memory is independent of the number of files.** Batches are global, not per file: the
   reader fills one batch from all files, in bounded chunks, round-robin, each file limited to a share
   of the batch so one busy file cannot starve the rest. Per-file bookkeeping (path, offsets,
@@ -212,6 +236,7 @@ ADR-0012). Versions are pinned in `Cargo.lock`.
 | Sc10 | soak with peak memory and CPU recorded against D9 |
 | Sc10b | 400 files at once against the D9 budget, the handle count and the D17 cap |
 | Sc3a | stop requests mid-batch on each OS; a second shipper on the same state folder |
+| Sc3b | state deleted, corrupted and over-full; each start-position policy |
 | core logic | unit tests in `quarrel-core`: batching limits, ledger never passing an ack, response classes, mapping |
 
 ## 12. Order of work (for the engineering plan)

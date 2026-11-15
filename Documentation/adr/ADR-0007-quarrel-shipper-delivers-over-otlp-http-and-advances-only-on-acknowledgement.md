@@ -61,7 +61,7 @@ to carry the identity it dedupes on.
    | any other `5xx` | as above |
 
 5. **Gaps are log records too**: event name `quarrel.gap`, attribute `quarrel.gap.kind`
-   (`truncated`, `rotated_unread`, `buffer_overflow`, `decode_error`, `rejected`) and the affected
+   (`truncated`, `rotated_unread`, `buffer_overflow`, `decode_error`, `rejected`, `no_history`) and the affected
    file and offset range. Nothing is dropped without one.
 6. **Batching:** a batch closes at a configured line count or byte size, or after a configured
    interval while lines are pending (defaults to be set from measurements; a receiver's limits, for

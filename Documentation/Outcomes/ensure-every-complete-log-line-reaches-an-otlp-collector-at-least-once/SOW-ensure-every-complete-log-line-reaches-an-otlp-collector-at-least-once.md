@@ -87,6 +87,12 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   the stop deadline with code 0; on restart, no line is lost and only the unacknowledged batch is
   re-sent. Starting a second shipper on the same state folder fails with exit code 2 and a message
   naming the lock. Test path: integration test on all three OSes.
+- [ ] **Sc3b — Lost or damaged state.** (a) Delete `state.json` while stopped and restart under each
+  `start_position` policy: expected behaviour per D22, the affected files logged, and a `no_history`
+  gap per non-empty file at the collector; `refuse` exits with code 2. (b) Corrupt `state.json`:
+  the shipper exits with code 2 naming the file; `--reset-state` moves it aside and continues with
+  `no_history` gaps. (c) Track 1,100 short-lived files: the state file never exceeds the D21 cap, and
+  evictions are logged. Test path: integration tests on all three OSes.
 - [ ] **Sc4 — `kill -9` loses nothing.** Ship a file growing at 1,000 lines/s; send `SIGKILL`
   (Windows: `TerminateProcess`) at 20 random moments, restarting each time; then let it drain.
   Expected: every line in the file is received at least once; duplicates exist only for batches in
@@ -196,6 +202,8 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-14 — State handling (architecture D21–D22): format, expiry and cap; missing/corrupt state
+  reported as `no_history` gaps; Sc3b added.
 - 2026-11-14 — Run modes (ADR-0013): foreground `run` + seams in scope, Sc3a added; service integration
   → BL-0026.
 - 2026-11-14 — Sc10b (many files) added with architecture D16/D17 (SB: guard against rogue file
