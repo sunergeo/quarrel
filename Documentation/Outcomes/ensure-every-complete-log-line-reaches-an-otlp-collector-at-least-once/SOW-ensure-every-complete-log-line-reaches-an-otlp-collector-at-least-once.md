@@ -43,6 +43,9 @@ health (NG4), FIPS TLS where required (NG6) and packaging (NG7) are also needed.
   - HTTPS with verification on by default, a bearer token or headers from config; the token never
     appears in output.
   - Configuration from a TOML file, with the same keys overridable from environment variables.
+  - A foreground `run` mode with ADR-0013's seams: one stop token and a bounded clean stop, a
+    single-instance lock, absolute default paths, meaningful exit codes, readiness, a log-sink
+    setting (architecture D18–D20). `check-config` validates without running.
   - The test collector: `quarrel-demo`'s receiver and test mode (D6, ADR-0009), recording what it
     receives and returning any response on demand. Its dashboard is not in this SOW's scope.
   - Builds and passes the scenarios on macOS, Linux and Windows.
@@ -61,7 +64,7 @@ health (NG4), FIPS TLS where required (NG6) and packaging (NG7) are also needed.
 - **NG5 — Docker, maillog and other sources.** Disposition: later SOWs.
 - **NG6 — FIPS-validated TLS.** Disposition: → BL-0006.
 - **NG7 — Packaging: container image changes, systemd/launchd/Windows service units, signed
-  releases.** Disposition: → M8.
+  releases.** Disposition: → M8; service integration → BL-0026 (ADR-0013).
 - **NG8 — OTLP/gRPC and JSON encodings.** Disposition: later, if a consumer needs them.
 
 ## 4. Acceptance Criteria (Definition of Done)
@@ -79,6 +82,11 @@ quarrel.file.fingerprint, quarrel.file.offset)`.
   offset where `half` began.
 - [ ] **Sc3 — Restart resumes, without resending.** Ship 100 lines; stop the shipper cleanly; append
   50; start it. Expected: the collector receives exactly the 50 new lines after the restart.
+- [ ] **Sc3a — Clean stops, one instance.** Send a stop (Ctrl-C / `SIGTERM`; Windows: console close)
+  while a batch is in flight, with the collector answering slowly. Expected: the shipper exits within
+  the stop deadline with code 0; on restart, no line is lost and only the unacknowledged batch is
+  re-sent. Starting a second shipper on the same state folder fails with exit code 2 and a message
+  naming the lock. Test path: integration test on all three OSes.
 - [ ] **Sc4 — `kill -9` loses nothing.** Ship a file growing at 1,000 lines/s; send `SIGKILL`
   (Windows: `TerminateProcess`) at 20 random moments, restarting each time; then let it drain.
   Expected: every line in the file is received at least once; duplicates exist only for batches in
@@ -188,6 +196,8 @@ behaviour to protect. The existing `scan` and `tail` modes are unchanged.
 
 ## Revisions
 
+- 2026-11-14 — Run modes (ADR-0013): foreground `run` + seams in scope, Sc3a added; service integration
+  → BL-0026.
 - 2026-11-14 — Sc10b (many files) added with architecture D16/D17 (SB: guard against rogue file
   counts).
 - 2026-11-14 — OQ7 resolved → D11; OQ5 transferred to Architecture OQ8.

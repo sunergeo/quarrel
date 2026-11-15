@@ -4,7 +4,7 @@ Untriaged signal. One file per item under `Backlog/`; this index is generated
 (`canon-index index`) and never hand-edited.
 
 <!-- BEGIN GENERATED INDEX — do not edit by hand; run `canon-index` -->
-_Next id: `BL-0026` (generated; capture new items with this id)._
+_Next id: `BL-0027` (generated; capture new items with this id)._
 ### Now
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|
@@ -37,6 +37,7 @@ _Next id: `BL-0026` (generated; capture new items with this id)._
 | BL-0022 | Candidate tool: application-layer timing checks (DNS, connect, TLS, first byte, transfer) to tell network from service | Process-idea | — | BI-03 | New | [·](Backlog/BL-0022-no-application-layer-timing-checks.md) |
 | BL-0023 | Candidate tool: DNS observability (resolution time per resolver, answer changes, failures, DNSSEC) | Process-idea | — | BI-01 | New | [·](Backlog/BL-0023-no-dns-observability.md) |
 | BL-0024 | Candidate quarrel-ping mode: two-ended measurement with a responder, for one-way latency and the return path | Process-idea | — | BI-01 | New | [·](Backlog/BL-0024-quarrel-ping-cannot-measure-one-way-latency-or-the-return-path.md) |
+| BL-0026 | quarrel-shipper cannot yet install as a Windows service or ship systemd/launchd units (M8 service integration, ADR-0013) | Process-idea | — | BI-02 | Triaged | [·](Backlog/BL-0026-quarrel-shipper-cannot-yet-install-as-a-service.md) |
 ### Closed (collapsed)
 | BL | Title | Type | Sev | Big idea | Status | ↗ |
 |----|-------|------|-----|----------|--------|---|

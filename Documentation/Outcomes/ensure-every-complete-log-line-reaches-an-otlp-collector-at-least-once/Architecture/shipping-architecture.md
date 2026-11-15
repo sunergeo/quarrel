@@ -55,6 +55,27 @@ invariant becomes testable without a network, a clock or a file system.
   **outcome** back. It never touches state.
 - **D13 — the reader thread is the only writer of offsets.** It owns the ledger and the state store,
   and applies outcomes in order. With one batch in flight there is exactly one possible order.
+- **D18 — one stop token, a bounded clean stop** (ADR-0013 §2). Ctrl-C, `SIGINT`, `SIGTERM` and (in
+  M8) a Windows service stop all set one token. On stop, the reader stops reading; the sender gets
+  until a deadline (default 10 s, configurable) to finish the in-flight batch; an acknowledged batch
+  is committed and saved, an unacknowledged one is left unsaved (it is re-sent next start). The exit
+  is clean either way. A second stop request during shutdown exits at once, still without saving
+  past an acknowledgement.
+- **D19 — one shipper per state folder.** At start, the shipper takes an exclusive lock on a lock
+  file in its state folder (released by the OS if the process dies); if it cannot, it exits with a
+  configuration-class error naming the holder's PID where the OS reports it. Two shippers sharing one
+  offset file would break the invariant.
+- **D20 — absolute default paths, exit codes, readiness, log sink** (ADR-0013 §4–7).
+  - Defaults: Linux `/etc/quarrel` (config) and `/var/lib/quarrel` (state); macOS
+    `/Library/Application Support/quarrel` (per-user: `~/Library/Application Support/quarrel`);
+    Windows `%ProgramData%\quarrel`. All overridable; relative paths in config are resolved against
+    the config file's folder, never the working folder.
+  - Exit codes: `0` clean stop; `2` configuration or lock error (supervisors must not restart);
+    `1` runtime failure (may restart).
+  - Readiness: "started" is logged (and, under systemd, notified) only after the configuration
+    validated and the lock is held.
+  - Log sink: `stderr` (default; text on a terminal, `json` on request) or `file`; the log folder is
+    auto-excluded from shipping. The Windows Event Log sink arrives with the service mode (BL-0026).
 - **D16 — memory is independent of the number of files.** Batches are global, not per file: the
   reader fills one batch from all files, in bounded chunks, round-robin, each file limited to a share
   of the batch so one busy file cannot starve the rest. Per-file bookkeeping (path, offsets,
@@ -190,6 +211,7 @@ ADR-0012). Versions are pinned in `Cargo.lock`.
 | Sc9 | the three-OS pipeline (ADR-0012) |
 | Sc10 | soak with peak memory and CPU recorded against D9 |
 | Sc10b | 400 files at once against the D9 budget, the handle count and the D17 cap |
+| Sc3a | stop requests mid-batch on each OS; a second shipper on the same state folder |
 | core logic | unit tests in `quarrel-core`: batching limits, ledger never passing an ack, response classes, mapping |
 
 ## 12. Order of work (for the engineering plan)

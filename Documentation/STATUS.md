@@ -43,3 +43,4 @@ and emits one vendor-neutral event stream (ADR-0005, Accepted). Its measurement 
 | ADR-0010 | Accepted |
 | ADR-0011 | Accepted |
 | ADR-0012 | Accepted |
+| ADR-0013 | Accepted |

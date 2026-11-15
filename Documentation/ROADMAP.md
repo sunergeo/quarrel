@@ -71,7 +71,8 @@ Candidate tools (BI-03, sleeping):
 
 Shipper track:
 
-- **M8 — packaging and CI.** First deployment; the release model moves `trunk-only` → `rolling-pair`
+- **M8 — packaging and CI.** Includes service integration: Windows service, systemd and launchd units (`BL-0026`,
+  ADR-0013). First deployment; the release model moves `trunk-only` → `rolling-pair`
   then (§11 governed operation).
 
 Lessons (optional, never on the shipping path; `crates/quarrel-lessons`), by the utility they shape:
